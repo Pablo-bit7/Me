@@ -1,0 +1,1 @@
+This repo contains anything that constitutes technical skills development. It should serve as a source of content and/or data that might be valuable as far as studying is concerned. It can serve as record of the technical development you would've already undergone.
