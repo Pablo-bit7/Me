@@ -10,7 +10,6 @@ void sayHi() /* 'void' tells the comp that this function doesn't returning anyth
 {
     printf("Hello user!");
 }
-/* to execute the code in the 'sayHi' function you'd need to CALL THE FUNCTION */
 
 
 /**
@@ -19,7 +18,7 @@ void sayHi() /* 'void' tells the comp that this function doesn't returning anyth
 */
 int main()
 {
-    sayHi();
+    sayHi(); /* to execute the code in the 'sayHi' function you'd need to CALL THE FUNCTION */
     
     return 0;
 }
