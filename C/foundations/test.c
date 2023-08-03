@@ -1,31 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int print(int nb)
+{
+    if (nb < 0) 
+    {
+        return (0);
+    }
+    printf("%d", nb + print(nb - 1));
+    nb --;
+    return (nb);
+}
+
 int main(void)
 {
-    int i;
-
-    printf("Before loop\n");
-
-    for (i = 0; i < 100; i++)
-    {
-            if (i % 2 != 0)
-            {
-                    printf("i is not even so don't print\n");
-                    continue;
-            }
-            else
-            {
-                    printf("i is even, break to print\n");
-                    break;
-            }
-
-            printf("Outside of if/else, still inside for loop\n");
-
-            printf("%d\n", i);
-    }
-
-    printf("For loop exited\n");
-
-    return(0);
+    print(4);
+    return (0);
 }
