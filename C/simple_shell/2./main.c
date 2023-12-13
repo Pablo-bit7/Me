@@ -6,7 +6,7 @@ int main(void)
 
     while(1)
     {
-        display_prompt();
+        _prompt();
         user_input(command, sizeof(command));
         execute_command(command);
     }

@@ -12,6 +12,7 @@
 
 /* ============ Function prototypes ============ */
 void _print(const char *format);
+void _prompt(void);
 
 /* Print helper functions */
 int _strlen(char *s);

@@ -13,6 +13,7 @@
 /* ============ Function prototypes ============ */
 int _printf(const char *format, ...);
 char **tokenize(char *str, char *delim);
+void _prompt(void);
 
 /* Print helper functions */
 int _putchar(char c);
