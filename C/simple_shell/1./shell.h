@@ -13,6 +13,7 @@
 /* ============ Function prototypes ============ */
 void _print(const char *format);
 void _prompt(void);
+void read_input(char *input, size_t size)
 
 /* Print helper functions */
 int _strlen(char *s);

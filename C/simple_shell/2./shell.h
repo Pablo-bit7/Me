@@ -12,8 +12,9 @@
 
 /* ============ Function prototypes ============ */
 int _printf(const char *format, ...);
-char **tokenize(char *str, char *delim);
 void _prompt(void);
+ssize_t read_input(char *buffer, size_t size);
+char **tokenize(char *str, char *delim);
 
 /* Print helper functions */
 int _putchar(char c);
