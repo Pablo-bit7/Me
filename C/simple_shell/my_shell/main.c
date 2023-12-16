@@ -27,11 +27,11 @@ int main(void)
         if (_strcmp(input_result, "exit") == 0 || input_result == EOF)
         {
             _printf("\n");
-            free(input_result);  // Free the allocated memory
+            free(input_result);  /* Free the allocated memory */
             break;
         }
 
-        if (input_result[0] == '\0')  // Empty string
+        if (input_result[0] == '\0')  /* Empty string */
         {    
             _printf("\n");
             free(input_result);

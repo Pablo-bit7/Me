@@ -4,6 +4,7 @@
  * is_delim - Func checks if a character is a delimiter
  * @c: The character to be checked
  * @delim: The array of delimiter characters
+ *
  * Return: 1 if it is a delimiter, 0 if it is not
  */
 int is_delim(char c, char *delim)
@@ -70,7 +71,7 @@ void execute_external_command(char **command, char **envp)
         exit(EXIT_FAILURE);
     }
 
-    if (child_pid == 0) // Child process
+    if (child_pid == 0) /* Child process */
     {
         if (execve(command[0], command, envp) == -1)
         {
@@ -78,9 +79,9 @@ void execute_external_command(char **command, char **envp)
             exit(EXIT_FAILURE);
         }
     }
-    else // Parent process
+    else /* Parent process */
     {
-        // Wait for the child process to complete
+        /* Wait for the child process to complete */
         waitpid(child_pid, NULL, 0);
     }
 }

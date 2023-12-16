@@ -1,4 +1,4 @@
-#include "shall.h"
+#include "shell.h"
 
 /**
  * tokenize - Splits string into words. Repeat delim are ignored.
@@ -20,8 +20,10 @@ char **tokenize(char *str, char *delim)
 
     numwords = 0;
     for (i = 0; str[i] != '\0'; i++)
+    {
         if (!is_delim(str[i], delim) && (is_delim(str[i + 1], delim) || !str[i + 1]))
             numwords++;
+    }
 
     if (numwords == 0)
         return (NULL);
@@ -39,10 +41,10 @@ char **tokenize(char *str, char *delim)
         while (!is_delim(str[i + k], delim) && str[i + k])
             k++;
 
-        words[x]  malloc((k + 1) * sizeof(char));
+        words[x] = malloc((k + 1) * sizeof(char));
         if (!words[x])
         {
-            for (k = 0; k < x; ++)
+            for (k = 0; k < x; k++)
                 free(words[k]);
             free(words);
             return (NULL);

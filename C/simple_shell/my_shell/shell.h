@@ -32,6 +32,6 @@ int _print_rev_str(char *str);
 int is_delim(char c, char *delim);
 int _strcmp(char *s1, char *s2);
 void print_environment(void);
-void execute_external_command(char **command, char **envp)
+void execute_external_command(char **command, char **envp);
 
 #endif /* SHELL_H */
