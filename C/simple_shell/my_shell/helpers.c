@@ -59,9 +59,10 @@ void print_environment(void)
  *
  * Return: The exit status of the command.
  */
-void execute_external_command(char **command, char **envp)
+int execute_external_command(char **command, char **envp)
 {
     pid_t child_pid;
+    int status;
 
     child_pid = fork();
 
@@ -84,4 +85,33 @@ void execute_external_command(char **command, char **envp)
         /* Wait for the child process to complete */
         waitpid(child_pid, NULL, 0);
     }
+
+    return (WEXITSTATUS(status));
+}
+
+int _atoi(char *s) 
+{
+    int index, sign = 1, state = 0;
+    long value = 0;
+
+    for (index = 0; s[index] != '\0' && state != 2; index++) {
+        if (s[index] == '-')
+            sign *= -1;
+
+        if (s[index] >= '0' && s[index] <= '9')
+        {
+            state = 1;
+            value = value * 10 + (s[index] - '0');
+
+            /* Check for overflow */
+            if (value > INT_MAX || value < INT_MIN)
+            {
+                exit(EXIT_FAILURE);
+            }
+        }
+        else if (state == 1)
+            state = 2;
+    }
+
+    return (int)(sign * value);
 }

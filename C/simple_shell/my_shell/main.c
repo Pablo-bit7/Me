@@ -24,7 +24,7 @@ int main(void)
         _prompt();
         input_result = read_input(&buffer_size);
 
-        if (_strcmp(input_result, "exit") == 0 || input_result == EOF)
+        if (_strcmp(input_result, "exit") == 0 || _atoi(input_result) == EOF)
         {
             _printf("\n");
             free(input_result);  /* Free the allocated memory */

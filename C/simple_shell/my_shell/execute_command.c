@@ -6,6 +6,8 @@
  */
 void execute_command(char **command)
 {
+    extern char **environ;
+
     if (command == NULL || command[0] == NULL)
     {
         /* No command entered or empty command */
@@ -24,7 +26,7 @@ void execute_command(char **command)
         if (access(command[0], X_OK) == 0)
         {
             /* The command is executable, execute it */
-            int status = execute_external_command(command);
+            int status = execute_external_command(command, environ);
 
             if (status == -1)
             {

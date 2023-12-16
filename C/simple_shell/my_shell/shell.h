@@ -14,7 +14,7 @@
 /* ============= Function prototypes ============ */
 int _printf(const char *format, ...);
 void _prompt(void);
-ssize_t read_input(char *buffer, size_t size);
+char *read_input(size_t *size);
 char **tokenize(char *str, char *delim);
 void execute_command(char **command);
 
@@ -32,6 +32,7 @@ int _print_rev_str(char *str);
 int is_delim(char c, char *delim);
 int _strcmp(char *s1, char *s2);
 void print_environment(void);
-void execute_external_command(char **command, char **envp);
+int execute_external_command(char **command, char **envp);
+int _atoi(char *s);
 
 #endif /* SHELL_H */
