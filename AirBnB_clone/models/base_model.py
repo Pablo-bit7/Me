@@ -2,7 +2,6 @@
 """Module for BaseModel class."""
 import uuid
 from datetime import datetime
-from models import storage
 
 
 class BaseModel:
@@ -10,6 +9,9 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Initialize BaseModel instance."""
+        from models import storage
+
+
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':

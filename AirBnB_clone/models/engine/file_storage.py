@@ -10,6 +10,10 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
+    __classes = {
+        'BaseModel': BaseModel
+        # Add other classes here as you define them
+    }
 
     def all(self):
         """Returns the dictionary __objects."""
@@ -33,9 +37,6 @@ class FileStorage:
                 obj_dict = json.load(file)
                 for key, value in obj_dict.items():
                     class_name = value["__class__"]
-                    if class_name in globals():
-                        cls = globals()[class_name]
-                    else:
-                        cls = BaseModel
+                    cls = FileStorage.__classes.get(class_name, BaseModel)
                     FileStorage.__objects[key] = cls(**value)
 
