@@ -96,7 +96,10 @@ class HBNBCommand(cmd.Cmd):
             except KeyError:
                 print("** class doesn't exist **")
                 return
-            instances = [str(obj) for obj in storage.all().values() if isinstance(obj, cls)]
+            instances = [
+                    str(obj) for obj in storage.all().values()
+                    if isinstance(obj, cls)
+                    ]
         else:
             instances = [str(obj) for obj in storage.all().values()]
         print(instances)
