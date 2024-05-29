@@ -2,9 +2,10 @@
 """Module for HBNBCommand class."""
 
 import cmd
-from models.base_model import BaseModel
-from models import storage
 import shlex
+from models import storage
+from models.base_model import BaseModel
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -32,13 +33,15 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        try:
-            cls = globals()[arg]
-            instance = cls()
-            instance.save()
-            print(instance.id)
-        except KeyError:
-            print("** class doesn't exist **")
+        args = shlex.split(arg)
+        class_name = args[0]
+        cls = strong.__classes.get(class_name)
+        if cls is None:
+            print("**class doesn't exist **")
+            return
+        instance = cls()
+        instance.save()
+        print(instance.id)
 
     def do_show(self, arg):
         """
@@ -90,12 +93,16 @@ class HBNBCommand(cmd.Cmd):
         Prints all string representation of all
         instances based or not on the class name.
         """
-        if arg:
-            try:
-                cls = globals()[arg]
-            except KeyError:
-                print("** class doesn't exist **")
-                return
+        args = shlex.split(arg)
+        if args:
+            class_name = args[0]
+            cls = storage.__classes.get(class_name)
+            if cls is None:
+                try:
+                    cls = globals()[arg]
+                except KeyError:
+                    print("** class doesn't exist **")
+                    return
             instances = [
                     str(obj) for obj in storage.all().values()
                     if isinstance(obj, cls)
@@ -121,18 +128,19 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return
-        key = "{}.{}".format(args[0], args[1])
-        instance = storage.all().get(key)
-        if not instance:
-            print("** no instance found **")
-            return
         if len(args) < 3:
             print("** attribute name missing **")
             return
         if len(args) < 4:
             print("** value missing **")
             return
-        setattr(instance, args[2], args[3])
+        class_name, instance_id, attr_name, attr_value = args[0], args[1], args[2], args[3]
+        key = "{}.{}".format(args[0], args[1])
+        instance = storage.all().get(key)
+        if not instance:
+            print("** no instance found **")
+            return
+        setattr(instance, attr_name, attr_value)
         instance.save()
 
 

@@ -3,6 +3,7 @@
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -11,7 +12,8 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
     __classes = {
-        'BaseModel': BaseModel
+        'BaseModel': BaseModel,
+        'User': User
         # Add other classes here as you define them
     }
 
@@ -39,4 +41,3 @@ class FileStorage:
                     class_name = value["__class__"]
                     cls = FileStorage.__classes.get(class_name, BaseModel)
                     FileStorage.__objects[key] = cls(**value)
-
