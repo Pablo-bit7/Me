@@ -2,10 +2,10 @@
 """Module for HBNBCommand class."""
 
 import cmd
-import shlex
-from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models import storage
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
@@ -33,15 +33,13 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        args = shlex.split(arg)
-        class_name = args[0]
-        cls = strong.__classes.get(class_name)
-        if cls is None:
-            print("**class doesn't exist **")
-            return
-        instance = cls()
-        instance.save()
-        print(instance.id)
+        try:
+            cls = globals()[arg]
+            instance = cls()
+            instance.save()
+            print(instance.id)
+        except KeyError:
+            print("** class doesn't exist **")
 
     def do_show(self, arg):
         """
@@ -93,20 +91,16 @@ class HBNBCommand(cmd.Cmd):
         Prints all string representation of all
         instances based or not on the class name.
         """
-        args = shlex.split(arg)
-        if args:
-            class_name = args[0]
-            cls = storage.__classes.get(class_name)
-            if cls is None:
-                try:
-                    cls = globals()[arg]
-                except KeyError:
-                    print("** class doesn't exist **")
-                    return
+        if arg:
+            try:
+                cls = globals()[arg]
+            except KeyError:
+                print("** class doesn't exist **")
+                return
             instances = [
-                    str(obj) for obj in storage.all().values()
-                    if isinstance(obj, cls)
-                    ]
+                str(obj) for obj in storage.all().values()
+                if isinstance(obj, cls)
+            ]
         else:
             instances = [str(obj) for obj in storage.all().values()]
         print(instances)
@@ -128,19 +122,18 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return
+        key = "{}.{}".format(args[0], args[1])
+        instance = storage.all().get(key)
+        if not instance:
+            print("** no instance found **")
+            return
         if len(args) < 3:
             print("** attribute name missing **")
             return
         if len(args) < 4:
             print("** value missing **")
             return
-        class_name, instance_id, attr_name, attr_value = args[0], args[1], args[2], args[3]
-        key = "{}.{}".format(args[0], args[1])
-        instance = storage.all().get(key)
-        if not instance:
-            print("** no instance found **")
-            return
-        setattr(instance, attr_name, attr_value)
+        setattr(instance, args[2], args[3])
         instance.save()
 
 
