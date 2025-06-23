@@ -28,7 +28,7 @@
 }
 
 .form-box .logo {
-    width: 195px;
+    width: 190px;
     margin-bottom: 20px;
 }
 
@@ -37,6 +37,10 @@
     margin-bottom: 60px;
     color: #00a1cf;
     position: relative;
+}
+
+.input-group {
+    margin-bottom: 50px;
 }
 
 .input-field {
@@ -60,5 +64,44 @@ input {
 .input-field i {
     margin-left: 15px;
     color: #aeaeae;
+}
+
+form p {
+    text-align: center;
+    font-size: 15px;
+}
+
+form p a {
+    color: #00a1cf;
+    text-decoration: none;
+}
+
+form p a:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+.button-field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-field button {
+    flex-basis: 40%;
+    background: #00a1cf;
+    color: #fff;
+    height: 35px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.button-field button:hover {
+    background: #008bb8;
+}
+
+.button-field button:active {
+    background: #00636b;
 }
 
