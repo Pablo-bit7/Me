@@ -3,14 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles/search_images.css">
+        <script src="https://kit.fontawesome.com/7adb9c0eec.js" crossorigin="anonymous"></script>
         <title>Google Images</title>
     </head>
     <body>
         <div>
             <ul class="nav-links">
-                <li class="nav-item"><a href="index.html">Google</a></li>
+                <li class="nav-item"><a href="google_search.html">Google Search</a></li>
             </ul>
         </div>
+        <div class="centre-div">
+            <img src="images/google-images_logo.PNG" alt="Google Logo" class="logo">
+        </div>
+        <form action="https://www.google.com/search">
+            <div class="input-field">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="q">
+                <i class="fa-solid fa-microphone"></i>
+                <i class="fa-solid fa-camera"></i>
+            </div>
+            <div class="centre-div">
+                <input type="hidden" name="tbm" value="isch">
+                <input type="submit" value="Google Search" class="search-btn">
+            </div>
+        </form>
     </body>
 </html>
