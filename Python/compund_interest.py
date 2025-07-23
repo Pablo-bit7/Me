@@ -7,6 +7,7 @@ def compound_interest(starting_balance, interest_rate, contribution, months):
     final_balance = starting_balance * (interest_rate) + contribution
 
     for i in range(1, months):
+        print(final_balance)
         final_balance = final_balance * (interest_rate) + contribution
     
     return final_balance
