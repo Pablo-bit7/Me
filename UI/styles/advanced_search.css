@@ -65,3 +65,46 @@ a:visited {
 .hr-line {
     border-bottom: 1px solid #ebebeb;
 }
+
+.form-container {
+    display: flex;
+    max-width: 1140px;
+    min-width: 200px;
+    width: 96%;
+    height: 826px;
+    margin: 40px 2% 0 45px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.text-container {
+    min-width: 182.39px;
+    width: 16%;
+    min-height: 41px;
+    color: #333;
+}
+
+.text-div {
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.form-spacer {
+    min-width: 570px;
+    min-height: 41px;
+    vertical-align: middle;
+    width: 50%;
+}
