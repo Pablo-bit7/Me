@@ -85,18 +85,18 @@ a:visited {
 .form-row {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: top;
     width: 100%;
 }
 
-.text-container {
+.text-container-left {
     min-width: 182.39px;
     width: 16%;
     min-height: 41px;
     color: #333;
 }
 
-.text-div {
+.form-header-text-div {
     height: 30px;
     display: table-cell;
     vertical-align: middle;
@@ -107,4 +107,20 @@ a:visited {
     min-height: 41px;
     vertical-align: middle;
     width: 50%;
+}
+
+.text-container-right {
+    width: 381.19px;
+    height: 30px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
+.explainer-header-text-div {
+    color: #777;
+    font-size: 13px;
+    font-weight: 700;
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
 }
