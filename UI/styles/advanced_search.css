@@ -85,7 +85,6 @@ a:visited {
 .form-row {
     display: flex;
     flex-direction: row;
-    align-items: top;
     width: 100%;
 }
 
@@ -110,6 +109,7 @@ a:visited {
 }
 
 .text-container-right {
+    display: table-cell;
     width: 381.19px;
     height: 30px;
     padding-left: 5px;
@@ -138,11 +138,10 @@ a:visited {
     display: flex;
     width: 100%;
     height: 29px;
-    padding-right: 16px;
 }
 
 .input-field input {
-    width: 103%;
+    width: 100%;
     text-align: left;
     border-radius: 1px;
     border: 1px solid #d9d9d9;
@@ -150,10 +149,32 @@ a:visited {
     font-size: 13px;
     height: 25px;
     padding: 1px 8px;
+    margin-top: 1px;
 }
 
 .input-field input:focus {
     outline: none;
     border: 1px solid #4d90fe;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.explainer-text-div {
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    min-width: 160px;
+    color: #555;
+    font-size: 11px;
+    padding-left: 11px;
+    padding-top: 1px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.example-text {
+    color: #666;
+    font-family: monospace;
+    font-size: 11px;
+    white-space: pre;
 }
