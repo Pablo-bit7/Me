@@ -178,3 +178,42 @@ a:visited {
     font-size: 11px;
     white-space: pre;
 }
+
+.btn-field-spacer {
+    display: flex;
+    min-width: 167px;
+    min-height: 41px;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 50%;
+    height: 50px;
+}
+
+.btn {
+    border-radius: 2px;
+    cursor: default;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #4d90fe;
+    background-image: linear-gradient(to bottom, #4d90fe, #4787ed);
+    border: 1px solid #3079ed;
+    color: #fff;
+    height: 36px;
+    padding: 0 12px;
+    min-width: 120px;
+    height: 30px;
+}
+
+.btn:hover {
+    background-color: #357ae8;
+    background-image: linear-gradient(to bottom, #4787ed, #357ae8);
+    border: 1px solid #2f5bb7;
+}
+
+.form-hr-line {
+    border-bottom: 1px solid #ebebeb;
+    width: 100%;
+    margin: 10px 0;
+}
