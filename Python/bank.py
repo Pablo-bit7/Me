@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     if "hello" in answer.lower():
         print("$0")
-    elif "h" in answer.lower():
+    elif answer.lower()[0] == "h":
         print("$20")
     else:
         print("$100")
