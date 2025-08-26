@@ -4,23 +4,25 @@ Function takes a file name as input and returns the media type for that file bas
 """
 
 def extension(file_name):
-    name_and_ext = file_name.lower().split(".")
+    name_and_ext = file_name.strip().lower().split(".")
 
     if len(name_and_ext) == 1:
         return "application/octet-stream"
-    elif name_and_ext[1] == "gif":
+    elif name_and_ext[-1] == "bin":
+        return "application/octet-stream"
+    elif name_and_ext[-1] == "gif":
         return "image/gif"
-    elif name_and_ext[1] == "jpg":
+    elif name_and_ext[-1] == "jpg":
         return "image/jpg"
-    elif name_and_ext[1] == "jpeg":
+    elif name_and_ext[-1] == "jpeg":
         return "image/jpeg"
-    elif name_and_ext[1] == "png":
+    elif name_and_ext[-1] == "png":
         return "image/png"
-    elif name_and_ext[1] == "pdf":
+    elif name_and_ext[-1] == "pdf":
         return "application/pdf"
-    elif name_and_ext[1] == "txt":
+    elif name_and_ext[-1] == "txt":
         return "text/plain"
-    elif name_and_ext[1] == "zip":
+    elif name_and_ext[-1] == "zip":
         return "application/zip"
 
 
