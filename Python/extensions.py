@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Function takes a file name as input and returns the media type for that file based on its file extension
+Function takes a file name as input and returns the media
+type for that file based on its file extension
 """
 
 def extension(file_name):
