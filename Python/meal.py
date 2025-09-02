@@ -23,6 +23,8 @@ def main():
             print("dinner time")
         elif hrs_min[0] == "19" and hrs_min[1] == "00":
             print("dinner time")
+        else:
+            pass
 
 def convert(time):
     hrs_min = time.strip().split(":")
