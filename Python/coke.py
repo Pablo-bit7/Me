@@ -16,6 +16,9 @@ def main():
         else:
             continue
 
+    if amount_due <= 0:
+        print(f"Change owed: {abs(amount_due)}")
+
 
 if __name__ == "__main__":
     main()
