@@ -7,18 +7,20 @@ Program prompts user for a fraction and outputs how much fuel is in the tank as 
 def main():
     while True:
         fraction = input("Fraction: ").strip()
+
         try:
-            x = int(fraction[0])
-            y = int(fraction[2])
+            x, y = fraction.split("/")
+            x = int(x)
+            y = int(y)
             perc = (x / y) * 100
-            if y != 4:
-                raise ValueError
+
         except ValueError:
             continue
         except ZeroDivisionError:
             continue
+
         else:
-            if x > y:
+            if x > y or x < 0:
                 continue
             elif perc <= 1:
                 print("E")
