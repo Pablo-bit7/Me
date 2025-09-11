@@ -22,13 +22,13 @@ def main():
         try:
             order = input("Item: ").strip()
             amount_due += menu[order.title()]
+            print(f"\nTotal: ${amount_due:.2f}")
 
         except ValueError:
             continue
         except KeyError:
             continue
         except EOFError:
-            print(f"\nTotal: {amount_due:.2f}$")
             break
 
 
