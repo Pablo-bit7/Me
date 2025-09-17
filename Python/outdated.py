@@ -37,6 +37,9 @@ def main():
             elif ", " in date:
                 parsed_date = date.split(" ")
 
+                if parsed_date[0].isdigit():
+                    continue
+
                 for i, char in enumerate(parsed_date):
                     parsed_date[i] = char.replace(",", "")
                     if parsed_date[i] in months:
