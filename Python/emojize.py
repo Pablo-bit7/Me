@@ -7,10 +7,10 @@ import emoji
 
 def main():
     try:
-        usr_npt = input("Input: ")
+        usr_npt = input("Input: ").strip()
 
         if "_" in usr_npt:
-            ...
+            print(f"Output: {emoji.emojize(usr_npt)}")
         
         else:
             ...
