@@ -8,20 +8,10 @@ import emoji
 def main():
     try:
         usr_npt = input("Input: ").strip()
-
-        if "_" in usr_npt:
-            print(f"Output: {emoji.emojize(usr_npt)}")
-        
-        else:
-            ...
+        print(f"Output: {emoji.emojize(usr_npt, language='alias')}")
     
-    except ValueError:
+    except (ValueError, EOFError):
         return
-    except EOFError:
-        return
-    
-    else:
-        ...
 
 
 if __name__ == "__main__":
