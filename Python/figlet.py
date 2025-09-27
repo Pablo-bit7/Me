@@ -11,8 +11,6 @@ from pyfiglet import Figlet
 
 
 def main():
-    prompt = input("Input: ").strip()
-
     try:
         figlet = Figlet()
 
@@ -31,6 +29,7 @@ def main():
     except (ValueError, KeyboardInterrupt, EOFError):
         return
 
+    prompt = input("Input: ").strip()
     print(figlet.renderText(prompt))
 
 
