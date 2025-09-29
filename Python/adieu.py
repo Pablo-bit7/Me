@@ -16,17 +16,24 @@ def main():
             names.append(prompt.title())
         
         except (EOFError, IndexError):
-            output = "Adiew, adieu, to"
+            output = "\nAdieu, adieu, to"
 
             if len(names) == 1:
-                output += f" {prompt}"
+                output += f" {prompt.title()}"
 
-            else:
+            elif len(names) == 2:
                 for i, char in enumerate(names):
                     if i == len(names) - 1:
                         output += f" and {char}"
                     elif i == len(names) - 2:
                         output += f" {char}"
+                    else:
+                        output += f" {char},"
+
+            else:
+                for i, char in enumerate(names):
+                    if i == len(names) - 1:
+                        output += f" and {char}"
                     else:
                         output += f" {char},"
             
