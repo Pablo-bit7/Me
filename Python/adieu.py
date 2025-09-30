@@ -8,13 +8,12 @@ Program prompts user for names until `Ctrl+D` signal, then bids adieu
 
 def main():
     names = []
-    #count = 0
 
     while True:
         try:
             prompt = input("Name: ").strip()
             names.append(prompt.title())
-        
+
         except (EOFError, IndexError):
             output = "\nAdieu, adieu, to"
 
@@ -36,7 +35,7 @@ def main():
                         output += f" and {char}"
                     else:
                         output += f" {char},"
-            
+
             print(output)
             break
 
