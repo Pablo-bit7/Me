@@ -19,6 +19,7 @@ def main():
 
                         if usr_guess > 0:
                             if usr_guess == level:
+                                print("Just right!")
                                 break
                             elif usr_guess > level:
                                 print("Too large!")
