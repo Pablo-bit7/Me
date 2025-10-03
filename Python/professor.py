@@ -24,8 +24,7 @@ def main():
                     score += 1
                     break
                 else:
-                    ans_count += 1
-                    continue
+                    raise ValueError
     
             except ValueError:
                 print("EEE")
@@ -34,8 +33,11 @@ def main():
 
         if ans_count == 3:
             print(f"{x} + {y} = {x + y}")
+        ans_count = 0
 
         prb_count += 1
+
+    print(f"Score: {score}")
 
 
 def get_level():
@@ -54,7 +56,7 @@ def get_level():
 
 def generate_integer(level):
     rng_start = 10 ** (level - 1)
-    rng_end = (10 ** level) -1
+    rng_end = (10 ** level) - 1
 
     return random.randint(rng_start, rng_end)
 
