@@ -6,14 +6,18 @@ Program that prompts the user for a str of text and then outputs that same text 
 
 def main():
     usr_npt = input("Input: ").strip()
+    print(f"Output: {shorten(usr_npt)}")
+
+
+def shorten(word):
     output = ""
 
-    for i in usr_npt:
+    for i in word:
         if i.lower() in ["a", "e", "i", "o", "u"]:
             i = ""
         output += i
 
-    print(f"Output: {output}")
+    return output
 
 
 if __name__ == "__main__":
