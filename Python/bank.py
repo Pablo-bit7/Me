@@ -3,12 +3,20 @@
 Seinfeld bank
 """
 
-if __name__ == '__main__':
-    answer = input("Greeting: ")
 
-    if "hello" in answer.lower():
-        print("$0")
-    elif answer.lower()[0] == "h":
-        print("$20")
+def main():
+    answer = input("Greeting: ")
+    value(answer)
+
+
+def value(greeting):
+    if "hello" in greeting.lower():
+        return "$0"
+    elif greeting.lower()[0] == "h":
+        return "$20"
     else:
-        print("$100")
+        return "$100"
+
+
+if __name__ == '__main__':
+    main()
