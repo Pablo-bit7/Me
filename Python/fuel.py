@@ -32,5 +32,13 @@ def main():
             break
 
 
+def convert(fraction_str):
+    ...
+
+
+def gauge(percentage):
+    ...
+
+
 if __name__ == "__main__":
     main()
