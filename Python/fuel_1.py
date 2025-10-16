@@ -1,20 +1,29 @@
 #!/usr/bin/env python3
 """
-Program prompts user for a fraction and outputs how much fuel is in the tank as a percentage
+Reimplementation of the `fuel` program
 """
 
 
-def main():
-    fraction = input("Fraction: ").strip()
-
-
 def convert(fraction_str):
-    ...
+    x, y = fraction_str.split("/")
+    x = int(x)
+    y = int(y)
+
+    if x > y:
+        raise ValueError
+
+    return round((x / y) * 100)
 
 
 def gauge(percentage):
-    ...
+    if percentage <= 1:
+        return "E"
+    elif percentage >= 99:
+        return "F"
+    else:
+        return f"{percentage}%"
 
 
 if __name__ == "__main__":
-    main()
+    fraction = input("Fraction: ").strip()
+    ...
