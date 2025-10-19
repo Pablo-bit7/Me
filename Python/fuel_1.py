@@ -9,7 +9,11 @@ def convert(fraction_str):
     x = int(x)
     y = int(y)
 
-    if x > y:
+    if y == 0:
+        raise ZeroDivisionError
+    elif x > y:
+        raise ValueError
+    elif x != abs(x) or y != abs(y):
         raise ValueError
 
     return round((x / y) * 100)

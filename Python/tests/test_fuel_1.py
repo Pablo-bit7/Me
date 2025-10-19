@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Tests for the `1-fuel` program
+Tests for the `fuel_1` program
 """
 from fuel_1 import convert, gauge
 import pytest
 
 
-def test__convert_valid_fractions():
+def test_convert_valid_fractions():
     """Test convert function with valid fractions"""
     assert convert("3/4") == 75
     assert convert("1/3") == 33
