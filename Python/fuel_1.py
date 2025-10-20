@@ -29,5 +29,13 @@ def gauge(percentage):
 
 
 if __name__ == "__main__":
-    fraction = input("Fraction: ").strip()
-    ...
+    while True:
+        try:
+            fraction = input("Fraction: ").strip()
+            percentage = convert(fraction)
+
+        except (ValueError, ZeroDivisionError):
+            continue
+
+        print(gauge(percentage))
+        break
