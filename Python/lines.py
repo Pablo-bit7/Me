@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Program takes 1 command-line argument (name/path of file) and opuputs
+Program takes 1 command-line argument (name/path of file) and outputs
 the number of lines of code in the file (excluding comments and blank lines)
 """
 import sys
