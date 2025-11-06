@@ -4,6 +4,7 @@ Program takes 2 command-line argument (name/path of an existing, input CSV
 file, & another as the ouput), and performs data cleaning & transformation
 """
 import sys
+import csv
 
 
 def main():
@@ -23,9 +24,25 @@ def main():
 
     try:
         with open(input_file_path, newline="", encoding="utf-8") as csvfile:
-            ...
+            reader = csv.DictReader(csvfile)
+
+            with open(output_file_path, newline="", encoding="utf-8") as outfile:
+                writer = csv.DictWriter(outfile, fieldnames=["name", "surname", "house"])
+                writer.writeheader()
+
+                for i in reader:
+                    full_name = i["name"]
+                    house = i["house"]
+                    surname, name = [part.strip() for part in full_name.split(",")]
+
+                    writer.writerow({
+                        "name": name,
+                        "surname": surname,
+                        "house": house
+                    })
+
     except FileNotFoundError:
-        sys.exit("File not found")
+        sys.exit("Input file not found")
 
 
 if __name__ == "__main__":
