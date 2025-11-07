@@ -26,7 +26,7 @@ def main():
         with open(input_file_path, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
 
-            with open(output_file_path, newline="", encoding="utf-8") as outfile:
+            with open(output_file_path, "w", newline="", encoding="utf-8") as outfile:
                 writer = csv.DictWriter(outfile, fieldnames=["name", "surname", "house"])
                 writer.writeheader()
 
