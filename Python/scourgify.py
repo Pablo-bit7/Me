@@ -27,7 +27,7 @@ def main():
             reader = csv.DictReader(csvfile)
 
             with open(output_file_path, "w", newline="", encoding="utf-8") as outfile:
-                writer = csv.DictWriter(outfile, fieldnames=["name", "surname", "house"])
+                writer = csv.DictWriter(outfile, fieldnames=["first", "last", "house"])
                 writer.writeheader()
 
                 for i in reader:
@@ -36,8 +36,8 @@ def main():
                     surname, name = [part.strip() for part in full_name.split(",")]
 
                     writer.writerow({
-                        "name": name,
-                        "surname": surname,
+                        "first": name,
+                        "last": surname,
                         "house": house
                     })
 
