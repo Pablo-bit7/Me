@@ -1,3 +1,7 @@
 Python/venv-cs50p
 Python/run.sh
+Python/__pycache__
+Python/tests/__pycache__
 Python/sicilian.csv
+Python/before.csv
+Python/after.csv
