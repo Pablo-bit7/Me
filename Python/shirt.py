@@ -36,8 +36,8 @@ def main():
                 shirt_img_size = shirt_img.size
                 base_img_resized = ImageOps.fit(base_img_copy, shirt_img_size)
 
-                composite_img = base_img_resized.paste(shirt_img, shirt_img)
-
+                base_img_resized.paste(shirt_img, shirt_img)
+                base_img_resized.save(output_file_path)
 
     except FileNotFoundError:
         sys.exit("Input does not exist")
