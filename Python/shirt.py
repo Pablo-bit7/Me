@@ -7,6 +7,7 @@ the result as output.
 """
 import sys
 from pathlib import Path
+from PIL import Image, ImageOps
 
 
 def main():
@@ -28,10 +29,18 @@ def main():
         sys.exit("Input and output have different extensions")
 
     try:
-        ...
+        with Image.open(input_file_path) as base_img:
+            base_img_copy = base_img.copy()
+
+            with Image.open("shirt.png") as shirt_img:
+                shirt_img_size = shirt_img.size
+                base_img_resized = ImageOps.fit(base_img_copy, shirt_img_size)
+
+                composite_img = base_img_resized.paste(shirt_img, shirt_img)
+
 
     except FileNotFoundError:
-        sys.exit("Specified input does not exist")
+        sys.exit("Input does not exist")
 
 
 if __name__ == "__main__":
