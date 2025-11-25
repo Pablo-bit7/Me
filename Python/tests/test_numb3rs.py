@@ -20,5 +20,12 @@ def test_invalid_ip():
     assert validate("cat") == False
 
 
+def test_wrong_number_of_octets():
+    assert validate("1.2.3") == False
+    assert validate("1.2.3.4.5") == False
+    assert validate("...") == False
+    assert validate("1..2.3") == False
+
+
 if __name__ == "__main__":
     pytest.main([__file__])
