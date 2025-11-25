@@ -3,7 +3,6 @@
 Tests for the `1-fuel` program
 """
 import re
-import sys
 
 
 def main():
@@ -13,7 +12,7 @@ def main():
 def validate(ip):
     if not re.search(r"^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$", ip):
         return False
-    
+
     octet = ip.split(".")
 
     for num in octet:
