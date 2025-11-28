@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Tests for the `1-fuel` program
+Program expects an IPv4 string and returns `True` if it is a valid address,
+and `False` otherwise
 """
 import re
 
