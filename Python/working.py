@@ -8,44 +8,43 @@ import sys
 
 
 def main():
-    print(convert(input("Hours: ")))
+    try:
+        print(convert(input("Hours: ")))
+    except ValueError:
+        sys.exit("Invalid input")
 
 
 def convert(time_12hr):
-    try:
-        pattern_match = re.search(r"^(1[0-2]|[1-9])(:[0-5][0-9])? (AM|PM) to (1[0-2]|[1-9])(:[0-5][0-9])? (AM|PM)$", time_12hr)
+    pattern_match = re.search(r"^(1[0-2]|[1-9])(:[0-5][0-9])? (AM|PM) to (1[0-2]|[1-9])(:[0-5][0-9])? (AM|PM)$", time_12hr)
 
-        if not pattern_match:
-            raise ValueError
-        
-        groups = pattern_match.groups()
+    if not pattern_match:
+        raise ValueError
 
-        hour_1 = int(groups[0])
-        minutes_1 = groups[1][1:] if groups[1] else "00"
-        period_1 = groups[2]
+    groups = pattern_match.groups()
 
-        hour_2 = int(groups[3])
-        minutes_2 = groups[4][1:] if groups[4] else "00"
-        period_2 = groups[5]
+    hour_1 = int(groups[0])
+    minutes_1 = groups[1][1:] if groups[1] else "00"
+    period_1 = groups[2]
 
-        if period_1 == "AM":
-            if hour_1 == 12:
-                hour_1 = 0
-        else:
-            if hour_1 != 12:
-                hour_1 += 12
+    hour_2 = int(groups[3])
+    minutes_2 = groups[4][1:] if groups[4] else "00"
+    period_2 = groups[5]
 
-        if period_2 == "AM":
-            if hour_2 == 12:
-                hour_2 = 0
-        else:
-            if hour_2 != 12:
-                hour_2 += 12
+    if period_1 == "AM":
+        if hour_1 == 12:
+            hour_1 = 0
+    else:
+        if hour_1 != 12:
+            hour_1 += 12
 
-        return f"{hour_1:02d}:{minutes_1} to {hour_2:02d}:{minutes_2}"
+    if period_2 == "AM":
+        if hour_2 == 12:
+            hour_2 = 0
+    else:
+        if hour_2 != 12:
+            hour_2 += 12
 
-    except ValueError:
-        sys.exit("Invalid input")
+    return f"{hour_1:02d}:{minutes_1} to {hour_2:02d}:{minutes_2}"
 
 
 if __name__ == "__main__":
