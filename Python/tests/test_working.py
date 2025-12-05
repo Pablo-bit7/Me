@@ -42,5 +42,12 @@ def test_invalid_minutes():
         convert("9:60 AM to 5 PM")
 
 
+def test_missing_to():
+    with pytest.raises(ValueError):
+        convert("9 AM 5 PM")
+    with pytest.raises(ValueError):
+        convert("9 AMto5 PM")
+
+
 if __name__ == "__main__":
     pytest.main([__file__])
