@@ -15,17 +15,9 @@ def main():
 
 
 def count(string):
-    match = re.search(r"\bum\b", string, re.IGNORECASE)
-
-    if not match:
-        raise ValueError
+    matches = re.findall(r"\bum\b", string, re.IGNORECASE)
     
-    groups = match.groups()
-
-    count =  0
-
-    for i in groups:
-        count += 1
+    count = len(matches)
 
     return count
 
