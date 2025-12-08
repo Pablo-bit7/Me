@@ -8,11 +8,26 @@ import sys
 
 
 def main():
-    print(count(input("Text: ")))
+    try:
+        print(count(input("Text: ")))
+    except ValueError:
+        sys.exit("Invalid input")
 
 
-def count(s):
-    ...
+def count(string):
+    match = re.search(r"\bum\b", string, re.IGNORECASE)
+
+    if not match:
+        raise ValueError
+    
+    groups = match.groups()
+
+    count =  0
+
+    for i in groups:
+        count += 1
+
+    return count
 
 
 if __name__ == "__main__":
