@@ -41,33 +41,41 @@ def test_validate_date_non_date_string():
 
 # Tests for convert_to_string
 
-def test_convert_to_string_zero():
-    """Zero minutes should be handled correctly."""
-    assert convert_to_string(0) == "zero"
+def test_convert_to_string_known_date():
+    """
+    Known date should return correct age in minutes as words.
+    """
+    dob = datetime.date(1999, 1, 1)
+    result = convert_to_string(dob)
 
-
-def test_convert_to_string_simple_number():
-    """Small numbers should be converted correctly."""
-    assert convert_to_string(5) == "five"
-
-
-def test_convert_to_string_large_number():
-    """Large numbers should be converted correctly."""
-    assert convert_to_string(525600) == (
-        "five hundred twenty five thousand six hundred"
+    assert result == (
+        "fourteen million, one hundred seventy-eight thousand, "
+        "two hundred forty"
     )
 
 
+def test_convert_to_string_today():
+    """
+    If date of birth is today, age should be zero minutes"""
+    today = datetime.date.today()
+    assert convert_to_string(today) == "zero"
+
+
 def test_convert_to_string_no_and():
-    """Output should not contain the word 'and'."""
-    result = convert_to_string(110)
-    assert "and" not in result
+    """
+    Output should not contain the word 'and'"""
+    dob = datetime.date(2000, 1, 1)
+    result = convert_to_string(dob)
+
+    words = result.split()
+    assert "and" not in words
 
 
-def test_convert_to_string_negative():
-    """Negative values should raise ValueError."""
-    with pytest.raises(ValueError):
-        convert_to_string(-1)
+def test_convert_to_string_type_error():
+    """
+    Non-date inputs should raise TypeError"""
+    with pytest.raises(TypeError):
+        convert_to_string(525600)
 
 
 if __name__ == "__main__":
