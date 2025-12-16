@@ -49,8 +49,8 @@ def test_convert_to_string_known_date():
     result = convert_to_string(dob)
 
     assert result == (
-        "fourteen million, one hundred seventy-eight thousand, "
-        "two hundred forty"
+        "Fourteen million, one hundred seventy-eight thousand, "
+        "two hundred forty minutes"
     )
 
 
@@ -58,7 +58,7 @@ def test_convert_to_string_today():
     """
     If date of birth is today, age should be zero minutes"""
     today = datetime.date.today()
-    assert convert_to_string(today) == "zero"
+    assert convert_to_string(today) == "Zero minutes"
 
 
 def test_convert_to_string_no_and():
