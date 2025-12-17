@@ -42,9 +42,7 @@ def test_validate_date_non_date_string():
 # Tests for convert_to_string
 
 def test_convert_to_string_known_date():
-    """
-    Known date should return correct age in minutes as words.
-    """
+    """Known date should return correct age in minutes as words"""
     dob = datetime.date(1999, 1, 1)
     result = convert_to_string(dob)
 
@@ -55,15 +53,13 @@ def test_convert_to_string_known_date():
 
 
 def test_convert_to_string_today():
-    """
-    If date of birth is today, age should be zero minutes"""
+    """If date of birth is today, age should be zero minutes"""
     today = datetime.date.today()
     assert convert_to_string(today) == "Zero minutes"
 
 
 def test_convert_to_string_no_and():
-    """
-    Output should not contain the word 'and'"""
+    """Output should not contain the word 'and'"""
     dob = datetime.date(2000, 1, 1)
     result = convert_to_string(dob)
 
@@ -72,8 +68,7 @@ def test_convert_to_string_no_and():
 
 
 def test_convert_to_string_type_error():
-    """
-    Non-date inputs should raise TypeError"""
+    """Non-date inputs should raise TypeError"""
     with pytest.raises(TypeError):
         convert_to_string(525600)
 
