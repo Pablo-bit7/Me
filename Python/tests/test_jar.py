@@ -33,7 +33,7 @@ def test_deposit():
     jar = Jar()
     jar.deposit(3)
     assert jar.size == 3
-    jar.deposit(8)
+    jar.deposit(5)
     assert jar.size == 8
     with pytest.raises(ValueError):
         jar.deposit(10)
