@@ -55,4 +55,28 @@ class Jar:
 
 
 if __name__ == "__main__":
-    ...
+    jar = Jar()
+    print(f"Created jar with capacity {jar.capacity}")
+    print(f"Current jar: {jar}")
+    
+    jar.deposit(5)
+    print(f"After depositing 5 cookies: {jar}")
+    print(f"Jar size: {jar.size}")
+    
+    jar.deposit(4)
+    print(f"After depositing 4 more cookies: {jar}")
+    print(f"Jar size: {jar.size}")
+    
+    jar.withdraw(3)
+    print(f"After withdrawing 3 cookies: {jar}")
+    print(f"Jar size: {jar.size}")
+    
+    try:
+        jar.deposit(10)
+    except ValueError as e:
+        print(f"Error: {e}")
+
+    try:
+        jar.withdraw(20)
+    except ValueError as e:
+        print(f"Error: {e}")
