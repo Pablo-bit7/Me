@@ -76,28 +76,6 @@
 </head>
 <body class="antialiased">
 
-    <!-- Chosen Palette: Warm Neutrals with Teal Accents (Stone 50 bg, White cards, Teal 700 primary, Slate 800 text) -->
-    
-    <!-- Application Structure Plan: 
-        The SPA is structured to guide the user through the problem, the solution, the capabilities, and finally the onboarding CTA.
-        1. Hero: Introduces the core question and value proposition.
-        2. The Problem (Silos): Displays the disconnected datasets as interactive cards.
-        3. The Solution (MCP Architecture): Uses a functional tabbed interface to walk through the pipeline.
-        4. Capabilities in Action: Translates abstract capabilities into concrete Chart.js visualizations.
-        5. Future State: Side-by-side comparison of current limitations vs. upcoming Vector Intelligence.
-        6. Pilot CTA (NEW): Distinct outbound links offloading form logic to n8n workflows for registration and feedback.
-    -->
-    
-    <!-- Visualization & Content Choices: 
-        1. Silo Cards: Goal: Organize. Method: HTML/CSS flex cards.
-        2. Architecture Flow: Goal: Process explanation. Method: HTML/JS tabbed list.
-        3. Parity Chart: Goal: Compare. Method: Chart.js Bar Chart.
-        4. Audit Chart: Goal: Inform/Proportions. Method: Chart.js Doughnut Chart.
-        Confirming NO SVG/Mermaid. All icons use Unicode.
-    -->
-    
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -115,9 +93,11 @@
         </div>
     </nav>
 
-    <header class="bg-neutral-50 py-20 lg:py-32 border-b border-neutral-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wide mb-6">
+    <header class="relative bg-fixed bg-cover bg-center py-20 lg:py-32 border-b border-neutral-200" style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <div class="absolute inset-0 bg-neutral-50/80 backdrop-blur-[1px]"></div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100/80 backdrop-blur-sm text-brand-700 text-xs font-bold uppercase tracking-wide mb-6">
                 <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
                 Now in Closed Alpha Pilot
             </div>
@@ -131,7 +111,7 @@
                 <a href="#pilot" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors duration-200 shadow-sm">
                     Request Access Key
                 </a>
-                <a href="#problem" class="inline-flex items-center justify-center px-6 py-3 border border-neutral-300 text-base font-medium rounded-md text-neutral-700 bg-white hover:bg-neutral-50 transition-colors duration-200">
+                <a href="#problem" class="inline-flex items-center justify-center px-6 py-3 border border-brand-300 text-base font-medium rounded-md text-brand-700 bg-white hover:bg-brand-50 transition-colors duration-200 shadow-sm">
                     Explore the Engine &#8595;
                 </a>
             </div>
@@ -184,8 +164,10 @@
         </div>
     </section>
 
-    <section id="architecture" class="py-20 bg-neutral-50 border-t border-b border-neutral-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="architecture" class="relative bg-fixed bg-cover bg-center py-20 border-t border-b border-neutral-200" style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <div class="absolute inset-0 bg-neutral-50/85 backdrop-blur-[0px]"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-12">
                 <h2 class="text-3xl font-bold text-neutral-800 mb-4">Under the Hood: The MCP Architecture</h2>
                 <p class="text-neutral-600 max-w-3xl">
@@ -193,8 +175,8 @@
                 </p>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-8 bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden">
-                <div class="w-full md:w-1/3 bg-neutral-50 border-r border-neutral-200 flex flex-col" id="arch-tabs">
+            <div class="flex flex-col md:flex-row gap-8 bg-white/90 backdrop-blur-md rounded-xl shadow-sm border border-neutral-200 overflow-hidden">
+                <div class="w-full md:w-1/3 bg-neutral-50/80 border-r border-neutral-200 flex flex-col" id="arch-tabs">
                     <button class="arch-btn step-active text-left px-6 py-5 border-l-4 border-transparent hover:bg-neutral-100 transition-colors focus:outline-none" data-target="step-1">
                         <div class="font-bold text-neutral-800">1. Ingestion Pipeline</div>
                         <div class="text-xs text-neutral-500 mt-1">Pulling from national silos</div>
@@ -360,7 +342,6 @@
         </div>
     </section>
 
-    <!-- NEW PILOT & FEEDBACK SECTION -->
     <section id="pilot" class="py-24 bg-brand-50 border-t border-brand-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-extrabold text-brand-900 mb-6">Join the Intelligence Pilot</h2>
@@ -370,23 +351,19 @@
             </p>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <!-- Registration Webhook Link -->
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-brand-100 flex flex-col justify-center items-center">
                     <div class="text-3xl mb-4">&#128273;</div>
                     <h3 class="text-lg font-bold text-neutral-800 mb-2">New Users</h3>
                     <p class="text-sm text-neutral-500 mb-6">Request an Access Key and setup instructions to integrate the engine into your workflow.</p>
-                    <!-- REPLACE '#' WITH YOUR N8N REGISTRATION WEBHOOK URL -->
-                    <a href="#" title="Access coming soon!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand-700 hover:bg-brand-800 transition-colors shadow-sm">
+                    <a href="#" title="Access coming soon!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors duration-200 shadow-sm">
                         Apply for Access Key
                     </a>
                 </div>
 
-                <!-- Feedback Webhook Link -->
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-brand-100 flex flex-col justify-center items-center">
                     <div class="text-3xl mb-4">&#128172;</div>
                     <h3 class="text-lg font-bold text-neutral-800 mb-2">Current Pilot Testers</h3>
                     <p class="text-sm text-neutral-500 mb-6">Found a bug? Have a feature request? Your operational insights drive our technical roadmap.</p>
-                    <!-- REPLACE '#' WITH YOUR N8N FEEDBACK WEBHOOK URL -->
                     <a href="#" title="Coming soon!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2 border border-brand-300 text-sm font-medium rounded-md text-brand-700 bg-white hover:bg-brand-50 transition-colors shadow-sm">
                         Submit Pilot Feedback
                     </a>
