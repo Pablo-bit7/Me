@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -51,6 +51,12 @@
             margin-right: auto;
             height: 300px;
             max-height: 400px;
+        }
+
+        .chart-container-tall {
+            position: relative;
+            width: 100%;
+            height: 400px;
         }
 
         @media (min-width: 768px) {
@@ -242,19 +248,19 @@
                 <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200">
                     <div class="mb-6">
                         <h3 class="text-xl font-bold text-neutral-800 flex items-center gap-2">
-                            <span class="text-brand-700">&#9878;</span> Market Parity Analysis
+                            <span class="text-brand-700">&#128202;</span> Therapeutic Landscape Mapping
                         </h3>
                         <p class="text-sm text-neutral-600 mt-2">
-                            Calculating the gap between State tender procurement prices (NDoH) and private sector Single Exit Prices (MPR). This identifies areas of high margin disparity.
+                            Visualizing the distribution of CPR licences across therapeutic areas (ATC chapters) to identify market concentration and white-space opportunities within the registered product landscape.
                         </p>
                     </div>
                     
                     <div class="bg-white p-4 rounded-lg shadow-sm border border-neutral-100">
-                        <div class="chart-container">
-                            <canvas id="parityChart"></canvas>
+                        <div class="chart-container-tall">
+                            <canvas id="landscapeChart"></canvas>
                         </div>
                         <div class="mt-4 text-center text-xs text-neutral-400 italic">
-                            *Mock visualization representing engine output for Drug X
+                            *Relative distribution of unique INNs by ATC Chapter
                         </div>
                     </div>
                 </div>
@@ -280,14 +286,15 @@
                 </div>
             </div>
             
-            <div class="mt-12 bg-amber-50 border border-amber-200 rounded-lg p-6 flex items-start gap-4">
-                <div class="text-amber-500 text-2xl">&#9888;</div>
-                <div>
-                    <h4 class="font-bold text-neutral-800">Current Constraints: Data Throttling</h4>
-                    <p class="text-sm text-neutral-700 mt-1">
-                        Due to the finite "context window" of current LLMs, we implement <strong>"data valves"</strong> to strictly limit information passed to the model. While ensuring accuracy, the engine currently analyzes the market in targeted "slices" rather than processing the entire national dataset in a single reasoning step.
-                    </p>
-                </div>
+            <div class="mt-16 text-center max-w-3xl mx-auto">
+                <h2 class="text-lg font-bold text-neutral-800 mb-2">Current Constraints: Context-Aware Data Architecture</h2>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    The engine uses a multi-stage approach to work within the finite context windows of current LLMs. Rather than dumping raw datasets into the model, it implements <strong>"data valves"</strong> — configurable pagination limits (default: 15 rows per tool call) that keep individual responses focused and precise. For broad market questions, the engine's aggregation layer pre-summarises datasets by supplier, molecule, or care level before passing results to the model, dramatically reducing token overhead without sacrificing analytical depth. For granular deep-dives, built-in pagination rules enforce multi-call retrieval so that no records are silently dropped.
+                </p>
+                <br>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    The practical effect: the engine analyses the market in deliberate, verifiable slices — trading the illusion of one-shot completeness for genuine data integrity across every query.
+                </p>
             </div>
         </div>
     </section>
@@ -295,9 +302,9 @@
     <section id="future" class="py-20 bg-neutral-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Looking Ahead: Vector Intelligence</h2>
+                <h2 class="text-3xl font-bold mb-4">Architectural Roadmap: Overcoming Throttling</h2>
                 <p class="text-neutral-400 max-w-3xl mx-auto">
-                    The move to a Vector Store is the most critical upcoming architectural shift. It will remove current throttling constraints and evolve the platform into a tool for unthrottled, long-term trend analysis.
+                    Moving to a hybrid retrieval architecture, combining semantic vector search with structured aggregation, will allow the engine to answer exploratory market questions across the full national dataset while preserving the exact-match precision required for regulatory and compliance queries.
                 </p>
             </div>
 
@@ -355,7 +362,7 @@
                     <div class="text-3xl mb-4">&#128273;</div>
                     <h3 class="text-lg font-bold text-neutral-800 mb-2">New Users</h3>
                     <p class="text-sm text-neutral-500 mb-6">Request an Access Key and setup instructions to integrate the engine into your workflow.</p>
-                    <a href="#" title="Access coming soon!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors duration-200 shadow-sm">
+                    <a href="http://localhost:5678/form/85e677bf-4f87-4172-9a28-7c150de0341c" title="Access coming soon!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors duration-200 shadow-sm">
                         Apply for Access Key
                     </a>
                 </div>
@@ -375,9 +382,9 @@
     <footer class="bg-neutral-900 py-12 text-center text-neutral-400 border-t border-neutral-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-2xl text-brand-500 mb-4">&#9881;</div>
-            <p class="font-medium text-neutral-300 mb-2">ZA Pharma Intelligence Engine</p>
-            <p class="text-sm max-w-md mx-auto">Prioritizing data integrity over speculative insights to map the reality of South African pharmaceutical market access.</p>
-            <p class="text-xs mt-8">&copy; 2026. Data structures based on Feb 2026 snapshot.</p>
+            <p class="font-medium text-neutral-300 mb-2">ZA Pharma Intelligence</p>
+            <p class="text-sm max-w-md mx-auto">Prioritizing data integrity over speculative insights to map the reality of the South African pharmaceutical landscape.</p>
+            <p class="text-xs mt-8">&copy; 2026. Data sourced live from SAHPRA, NDoH, and the Medicine Price Registry, with intelligent fallback to the most recent cached release.</p>
         </div>
     </footer>
 
@@ -409,23 +416,21 @@
             Chart.defaults.font.family = "'Inter', sans-serif";
             Chart.defaults.color = '#78716c';
 
-            // Parity Chart
-            const ctxParity = document.getElementById('parityChart').getContext('2d');
-            new Chart(ctxParity, {
+            // Landscape Chart
+            const ctxLandscape = document.getElementById('landscapeChart').getContext('2d');
+            new Chart(ctxLandscape, {
                 type: 'bar',
                 data: {
-                    labels: ['Public Tender (NDoH)', 'Private SEP (MPR)'],
+                    labels: ['Anti-infectives', 'CNS', 'Blood & Haematology', 'Alimentary & Metab.', 'Antineoplastic', 'Cardiovascular', 'Dermatologicals', 'Various', 'Sensory Organs', 'Genito-urinary', 'Respiratory', 'Musculoskeletal', 'Systemic Hormones', 'Antiparasitic'],
                     datasets: [{
-                        label: 'Average Unit Price (ZAR)',
-                        data: [12.50, 48.90],
-                        backgroundColor: [
-                            '#14b8a6', 
-                            '#e7e5e4'  
-                        ],
+                        label: 'Unique INNs',
+                        data: [92, 66, 63, 55, 53, 35, 33, 31, 29, 28, 19, 16, 13, 5],
+                        backgroundColor: '#14b8a6', 
                         borderRadius: 4
                     }]
                 },
                 options: {
+                    indexAxis: 'y', // Renders horizontally
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
@@ -433,23 +438,19 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return ' R ' + context.parsed.y.toFixed(2);
+                                    return ' ' + context.parsed.x + ' INNs';
                                 }
                             }
                         }
                     },
                     scales: {
-                        y: {
+                        x: {
                             beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Price in ZAR'
-                            },
                             grid: {
                                 color: '#f5f5f4'
                             }
                         },
-                        x: {
+                        y: {
                             grid: {
                                 display: false
                             }
