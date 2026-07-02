@@ -1,12 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-ZA" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZA Pharma Intelligence Engine</title>
+
+    <!-- ============ SEO: core meta ============ -->
+    <title>ZA Pharma Intel — AI Market Intelligence for South African Pharma | SAHPRA, NDoH & MPR Data</title>
+    <meta name="description" content="ZA Pharma Intel unifies SAHPRA's regulatory registry, the NDoH Master Health Product List, and the Medicine Price Registry into one AI-queryable intelligence layer for South Africa's pharmaceutical market. Now in closed alpha.">
+    <meta name="keywords" content="South African pharmaceutical data, SAHPRA registry, NDoH tenders, Medicine Price Registry, MPR, pharma market intelligence, market access South Africa, MCP server, pharmaceutical regulatory data">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="ZA Pharma Intel">
+    <link rel="canonical" href="https://zapharmaintel.co.za/">
+
+    <!-- ============ SEO: Open Graph / social ============ -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ZA Pharma Intel">
+    <meta property="og:locale" content="en_ZA">
+    <meta property="og:url" content="https://zapharmaintel.co.za/">
+    <meta property="og:title" content="ZA Pharma Intel — AI Market Intelligence for South African Pharma">
+    <meta property="og:description" content="One AI-queryable layer over SAHPRA, NDoH, and the Medicine Price Registry. Map who's licensed, who's winning tenders, and who's pricing competitively — inside Claude.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1749244768351-2726dc23d26c?w=1200&h=630&fit=crop&auto=format&q=80">
+    <meta property="og:image:alt" content="ZA Pharma Intel — pharmaceutical market intelligence engine">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ZA Pharma Intel — AI Market Intelligence for South African Pharma">
+    <meta name="twitter:description" content="One AI-queryable layer over SAHPRA, NDoH, and the Medicine Price Registry. Now in closed alpha.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1749244768351-2726dc23d26c?w=1200&h=630&fit=crop&auto=format&q=80">
+
+    <!-- ============ Favicon (inline SVG mark, no external file needed) ============ -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cpath d='M8 8 L15 14 M24 8 L17 14 M16 14 L16 25' stroke='white' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='16' cy='14' r='2.4' fill='white'/%3E%3C/svg%3E">
+
+    <!-- ============ Structured data (SEO: SoftwareApplication + Organization) ============ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ZA Pharma Intel",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any MCP-compatible AI client (e.g. Claude)",
+          "description": "An MCP server that unifies SAHPRA establishment records, the NDoH Master Health Product List, and the Medicine Price Registry into a single AI-queryable intelligence layer for the South African pharmaceutical market.",
+          "url": "https://zapharmaintel.co.za/",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "ZAR",
+            "availability": "https://schema.org/LimitedAvailability",
+            "description": "Closed alpha pilot, access by application"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "ZA Pharma Intel",
+          "url": "https://zapharmaintel.co.za/",
+          "description": "AI-powered pharmaceutical market intelligence for South Africa."
+        }
+      ]
+    }
+    </script>
+
+    <!-- ============ Fonts & framework ============ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -14,249 +74,366 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         brand: {
                             50: '#f0fdfa',
                             100: '#ccfbf1',
+                            200: '#99f6e4',
                             500: '#14b8a6',
                             600: '#0d9488',
                             700: '#0f766e',
+                            800: '#115e59',
                             900: '#134e4a',
                         },
                         neutral: {
                             50: '#fafaf9',
                             100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
                             800: '#292524',
                             900: '#1c1917',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
                         }
                     }
                 }
             }
         }
     </script>
-    
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fafaf9; 
+            background-color: #fafaf9;
             color: #292524;
         }
-        
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+        .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+        :focus-visible {
+            outline: 2px solid #0d9488;
+            outline-offset: 2px;
+            border-radius: 2px;
         }
 
-        .chart-container-tall {
-            position: relative;
-            width: 100%;
-            height: 400px;
-        }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: 0 auto; height: 300px; max-height: 400px; }
+        .chart-container-tall { position: relative; width: 100%; height: 380px; }
+        @media (min-width: 768px) { .chart-container { height: 340px; } }
 
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-
-        /* Workflow Specific Styles */
         .active-node {
             background-color: #f0fdfa;
             border-color: #0f766e !important;
             color: #0f766e !important;
         }
-        
-        .workflow-arrow {
-            width: 40px;
-            height: 2px;
-            background-color: #e5e7eb;
-            margin: 0 12px;
-            position: relative;
-            flex-shrink: 0;
-        }
 
+        .workflow-arrow {
+            width: 28px; height: 1px; background-color: #d6d3d1;
+            margin: 0 4px; position: relative; flex-shrink: 0;
+        }
         .workflow-arrow::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: -3px;
-            width: 8px;
-            height: 8px;
-            border-top: 2px solid #e5e7eb;
-            border-right: 2px solid #e5e7eb;
+            content: ''; position: absolute; right: 0; top: -3px;
+            width: 6px; height: 6px;
+            border-top: 1px solid #d6d3d1; border-right: 1px solid #d6d3d1;
             transform: rotate(45deg);
         }
-        
-        .silo-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        .silo-card, .cap-card, .cta-card { transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; }
+        .silo-card:hover, .cap-card:hover, .cta-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(15, 118, 110, 0.18);
+            border-color: #99f6e4;
         }
-        .silo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+        /* Hero product mockup */
+        .mock-window { box-shadow: 0 24px 60px -20px rgba(19, 78, 74, 0.35), 0 4px 12px -4px rgba(0,0,0,0.08); }
+        .mock-dot { width: 9px; height: 9px; border-radius: 999px; display: inline-block; }
+
+        /* Signature backdrop behind the hero mockup: quiet signal-tick texture, static, no motion */
+        .signal-field {
+            background-image: repeating-linear-gradient(
+                90deg,
+                rgba(15, 118, 110, 0.10) 0px,
+                rgba(15, 118, 110, 0.10) 2px,
+                transparent 2px,
+                transparent 14px
+            );
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
         }
+        .signal-field-footer {
+            background-image: repeating-linear-gradient(
+                90deg,
+                rgba(20, 184, 166, 0.35) 0px,
+                rgba(20, 184, 166, 0.35) 2px,
+                transparent 2px,
+                transparent 10px
+            );
+            mask-image: linear-gradient(to bottom, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+        }
+
+        .status-dot { width: 6px; height: 6px; border-radius: 999px; background: #14b8a6; display: inline-block; }
+
+        .photo-frame {
+            box-shadow: 0 30px 60px -25px rgba(19, 78, 74, 0.35);
+        }
+
+        code, .code-block { font-family: 'JetBrains Mono', ui-monospace, monospace; }
     </style>
 </head>
 <body class="antialiased">
 
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-2 focus:left-2 focus:bg-white focus:px-4 focus:py-2 focus:rounded-md focus:shadow-lg">Skip to content</a>
+
+    <!-- ============ NAV ============ -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <span class="text-brand-700 text-2xl font-bold">&#9881;</span>
-                    <span class="font-bold text-xl tracking-tight text-neutral-800">ZA Pharma Intel</span>
-                </div>
+                <a href="#top" class="flex-shrink-0 flex items-center gap-2.5" aria-label="ZA Pharma Intel home">
+                    <span class="w-8 h-8 rounded-lg bg-brand-700 flex items-center justify-center flex-shrink-0">
+                        <svg width="16" height="16" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                            <path d="M8 8 L15 14 M24 8 L17 14 M16 14 L16 25" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+                            <circle cx="16" cy="14" r="2.6" fill="white"/>
+                        </svg>
+                    </span>
+                    <span class="font-bold text-lg tracking-tight text-neutral-800">ZA Pharma Intel</span>
+                </a>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#problem" class="text-sm font-medium text-neutral-600 hover:text-brand-700 transition-colors">The Problem</a>
                     <a href="#architecture" class="text-sm font-medium text-neutral-600 hover:text-brand-700 transition-colors">Architecture</a>
                     <a href="#capabilities" class="text-sm font-medium text-neutral-600 hover:text-brand-700 transition-colors">Capabilities</a>
-                    <a href="#pilot" class="text-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors px-3 py-1 bg-brand-50 rounded-md">Join Pilot</a>
+                    <a href="#future" class="text-sm font-medium text-neutral-600 hover:text-brand-700 transition-colors">Roadmap</a>
+                    <a href="#pilot" class="text-sm font-semibold text-white bg-brand-700 hover:bg-brand-900 transition-colors px-4 py-2 rounded-md">Join Pilot</a>
                 </div>
+                <a href="#pilot" class="md:hidden text-sm font-semibold text-white bg-brand-700 px-3 py-1.5 rounded-md">Join Pilot</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative bg-fixed bg-cover bg-center py-20 lg:py-32 border-b border-neutral-200" style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
-        <div class="absolute inset-0 bg-neutral-50/80 backdrop-blur-[1px]"></div>
-        
-        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100/80 backdrop-blur-sm text-brand-700 text-xs font-bold uppercase tracking-wide mb-6">
-                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                Now in Closed Alpha Pilot
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-800 tracking-tight leading-tight mb-6">
-                Who Enters, Who Competes, and <span class="text-brand-700">Who Wins?</span>
-            </h1>
-            <p class="text-lg md:text-xl text-neutral-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                South Africa’s pharmaceutical market is opaque. Getting licensed isn't enough to understand who actually accesses the public market. We built an AI-powered intelligence engine to map the full pathway of market access.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#pilot" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors duration-200 shadow-sm">
-                    Request Access Key
-                </a>
-                <a href="#problem" class="inline-flex items-center justify-center px-6 py-3 border border-brand-300 text-base font-medium rounded-md text-brand-700 bg-white hover:bg-brand-50 transition-colors duration-200 shadow-sm">
-                    Explore the Engine &#8595;
-                </a>
+    <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <header id="top" class="relative overflow-hidden border-b border-neutral-200 bg-neutral-50">
+        <div class="absolute inset-0 signal-field pointer-events-none" aria-hidden="true"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
+            <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+                <!-- Copy column -->
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-200 bg-white text-brand-700 text-xs font-mono font-medium tracking-wide mb-7">
+                        <span class="status-dot"></span>
+                        STATUS: CLOSED ALPHA PILOT
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold text-neutral-800 tracking-tight leading-[1.08] mb-6">
+                        Who enters, who competes, and <span class="text-brand-700">who wins?</span>
+                    </h1>
+                    <p class="text-lg text-neutral-600 mb-9 max-w-xl leading-relaxed">
+                        South Africa's pharmaceutical market is opaque. Getting licensed isn't enough to understand who actually accesses the public market. We built an AI-powered intelligence engine to map the full pathway of market access.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="#pilot" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors shadow-sm">
+                            Request Access Key
+                        </a>
+                        <a href="#architecture" class="inline-flex items-center justify-center px-6 py-3 border border-neutral-300 text-base font-medium rounded-md text-neutral-700 bg-white hover:border-brand-700 hover:text-brand-700 transition-colors">
+                            See how it works
+                        </a>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-3">Live public data, not static exports</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="font-mono text-xs px-2.5 py-1.5 rounded border border-neutral-200 bg-white text-neutral-600">SAHPRA · establishment registry</span>
+                            <span class="font-mono text-xs px-2.5 py-1.5 rounded border border-neutral-200 bg-white text-neutral-600">NDoH · MHPL tenders</span>
+                            <span class="font-mono text-xs px-2.5 py-1.5 rounded border border-neutral-200 bg-white text-neutral-600">NDoH · MPR / SEP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product mockup column -->
+                <div class="relative">
+                    <div class="mock-window rounded-xl border border-neutral-200 bg-white overflow-hidden">
+                        <div class="flex items-center gap-1.5 px-4 py-3 border-b border-neutral-100 bg-neutral-50">
+                            <span class="mock-dot bg-neutral-300"></span>
+                            <span class="mock-dot bg-neutral-300"></span>
+                            <span class="mock-dot bg-neutral-300"></span>
+                            <span class="ml-3 text-xs font-mono text-neutral-400">za-pharma-intelligence · connected via Claude</span>
+                        </div>
+                        <div class="p-5 space-y-4 text-sm">
+                            <div class="flex gap-2.5">
+                                <span class="w-6 h-6 rounded-full bg-neutral-200 flex-shrink-0"></span>
+                                <p class="text-neutral-700 leading-relaxed pt-0.5">Which suppliers won the most NDoH tenders for antibiotics (ATC J01), and are they SAHPRA licensed?</p>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <span class="w-6 h-6 rounded-full bg-brand-700 flex-shrink-0 flex items-center justify-center">
+                                    <svg width="12" height="12" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 8 L15 14 M24 8 L17 14 M16 14 L16 25" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>
+                                </span>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-semibold text-neutral-800 text-[13px] mb-1">Aggregate Public Market Analysis by Supplier</p>
+                                    <p class="font-mono text-[11px] text-neutral-400 mb-2.5">Source: NDoH MHPL 15 Jun 2026 <span class="text-brand-600 font-semibold">[LIVE]</span> · Showing 1–5 of 22</p>
+                                    <div class="overflow-x-auto rounded-md border border-neutral-100">
+                                        <table class="w-full text-[11px] font-mono">
+                                            <thead>
+                                                <tr class="bg-neutral-50 text-neutral-500">
+                                                    <th class="text-left font-medium px-2.5 py-1.5">Supplier</th>
+                                                    <th class="text-right font-medium px-2.5 py-1.5">Contracts</th>
+                                                    <th class="text-right font-medium px-2.5 py-1.5">Total_ZAR</th>
+                                                    <th class="text-right font-medium px-2.5 py-1.5">Avg_Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-neutral-700">
+                                                <tr class="border-t border-neutral-100"><td class="px-2.5 py-1.5">Meridian Pharma</td><td class="text-right px-2.5 py-1.5">14</td><td class="text-right px-2.5 py-1.5">4.82M</td><td class="text-right px-2.5 py-1.5">61.20</td></tr>
+                                                <tr class="border-t border-neutral-100"><td class="px-2.5 py-1.5">Falcon Health</td><td class="text-right px-2.5 py-1.5">9</td><td class="text-right px-2.5 py-1.5">3.10M</td><td class="text-right px-2.5 py-1.5">58.75</td></tr>
+                                                <tr class="border-t border-neutral-100"><td class="px-2.5 py-1.5">Baobab Biologics</td><td class="text-right px-2.5 py-1.5">6</td><td class="text-right px-2.5 py-1.5">1.94M</td><td class="text-right px-2.5 py-1.5">64.05</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-xs text-neutral-400 mt-4 font-mono">Illustrative output — figures are placeholders, format matches the live tool response.</p>
+                </div>
+
             </div>
         </div>
     </header>
 
-    <section id="problem" class="py-20 bg-white">
+    <!-- ============ PROBLEM ============ -->
+    <section id="problem" class="py-20 lg:py-24 bg-white scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-neutral-800 mb-4">The Barrier: Disconnected Data Silos</h2>
-                <p class="text-neutral-600 max-w-3xl mx-auto">
+            <div class="max-w-2xl mb-16">
+                <p class="text-xs font-mono uppercase tracking-wider text-brand-700 mb-3">The barrier</p>
+                <h2 class="text-3xl font-bold text-neutral-800 mb-4">Disconnected data silos</h2>
+                <p class="text-neutral-600 leading-relaxed">
                     South Africa has a rich ecosystem of public pharmaceutical data, but it exists in independent silos. Analysts waste time manually extracting, cleaning, and rebuilding datasets. Our engine bridges these specific sources to create a unified view.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200 flex flex-col items-center text-center">
-                    <div class="text-4xl text-brand-700 mb-4">&#127970;</div>
-                    <h3 class="text-xl font-bold text-neutral-800 mb-2">SAHPRA Registry</h3>
-                    <p class="text-sm text-neutral-600 mb-4 flex-grow">Regulatory data on active licensed pharmaceutical establishments.</p>
-                    <ul class="text-sm text-left w-full space-y-2 text-neutral-500">
-                        <li>&#10003; Drug Manufacturers</li>
-                        <li>&#10003; Registered Packers</li>
-                        <li>&#10003; License Validity</li>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200">
+                    <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-5">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="16" height="11"/><path d="M9 21V13h6v8"/><path d="M4 9L12 3l8 6"/></svg>
+                    </span>
+                    <h3 class="text-lg font-bold text-neutral-800 mb-2">SAHPRA Registry</h3>
+                    <p class="text-sm text-neutral-600 mb-5">Regulatory data on active licensed pharmaceutical establishments.</p>
+                    <ul class="text-sm space-y-2 text-neutral-500">
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Drug manufacturers</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Registered packers</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>License validity</li>
                     </ul>
                 </div>
 
-                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200 flex flex-col items-center text-center">
-                    <div class="text-4xl text-brand-700 mb-4">&#128176;</div>
-                    <h3 class="text-xl font-bold text-neutral-800 mb-2">NDoH Procurement</h3>
-                    <p class="text-sm text-neutral-600 mb-4 flex-grow">Public sector procurement data from the Master Procurement Catalogue (MPC).</p>
-                    <ul class="text-sm text-left w-full space-y-2 text-neutral-500">
-                        <li>&#10003; Master Health Product List</li>
-                        <li>&#10003; Unit Prices & Quantities</li>
-                        <li>&#10003; Supplier Awards</li>
+                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200">
+                    <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-5">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M8 15h2"/></svg>
+                    </span>
+                    <h3 class="text-lg font-bold text-neutral-800 mb-2">NDoH Procurement</h3>
+                    <p class="text-sm text-neutral-600 mb-5">Public sector procurement data from the Master Procurement Catalogue.</p>
+                    <ul class="text-sm space-y-2 text-neutral-500">
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Master Health Product List</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Unit prices & quantities</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Supplier awards</li>
                     </ul>
                 </div>
 
-                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200 flex flex-col items-center text-center">
-                    <div class="text-4xl text-brand-700 mb-4">&#128202;</div>
-                    <h3 class="text-xl font-bold text-neutral-800 mb-2">Medicine Price Registry</h3>
-                    <p class="text-sm text-neutral-600 mb-4 flex-grow">Pricing data reflecting the private sector environment.</p>
-                    <ul class="text-sm text-left w-full space-y-2 text-neutral-500">
-                        <li>&#10003; Private Sector Pricing</li>
-                        <li>&#10003; Molecule Competitiveness</li>
-                        <li>&#10003; Supplier Information</li>
+                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200">
+                    <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-5">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </span>
+                    <h3 class="text-lg font-bold text-neutral-800 mb-2">Medicine Price Registry</h3>
+                    <p class="text-sm text-neutral-600 mb-5">Pricing data reflecting the private sector environment.</p>
+                    <ul class="text-sm space-y-2 text-neutral-500">
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Private sector pricing</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Molecule competitiveness</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Supplier information</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="architecture" class="relative bg-fixed bg-cover bg-center py-20 border-t border-b border-neutral-200" style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
-        <div class="absolute inset-0 bg-neutral-50/85 backdrop-blur-[0px]"></div>
-        
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12">
-                <h2 class="text-3xl font-bold text-neutral-800 mb-4">Under the Hood: The MCP Architecture</h2>
-                <p class="text-neutral-600 max-w-3xl">
-                    To move beyond static spreadsheets, we built a Model Context Protocol (MCP) server. It acts as a standardized gateway allowing Large Language Models (LLMs) to interact with our local datasets dynamically directly inside tools like Claude.
+    <!-- ============ FRAMED PHOTO BANNER ============ -->
+    <section class="py-4 bg-neutral-50 border-y border-neutral-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div class="relative rounded-2xl overflow-hidden photo-frame">
+                <img
+                    src="https://images.unsplash.com/photo-1749244768351-2726dc23d26c?w=1800&auto=format&fit=crop&q=80"
+                    alt="Rows of industrial warehouse shelving used for distribution and inventory, representing the public procurement pipeline ZA Pharma Intel tracks"
+                    class="w-full h-[280px] md:h-[360px] object-cover"
+                    loading="lazy"
+                    width="1800" height="360"
+                >
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-900/85 via-brand-900/40 to-transparent"></div>
+                <div class="absolute inset-0 flex items-center">
+                    <div class="px-8 md:px-14 max-w-lg">
+                        <p class="text-white text-xl md:text-2xl font-semibold leading-snug">Three siloed government sources.<br>One query layer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section id="architecture" class="py-20 lg:py-24 bg-white scroll-mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mb-12">
+                <p class="text-xs font-mono uppercase tracking-wider text-brand-700 mb-3">Under the hood</p>
+                <h2 class="text-3xl font-bold text-neutral-800 mb-4">The MCP architecture</h2>
+                <p class="text-neutral-600 leading-relaxed">
+                    To move beyond static spreadsheets, we built a Model Context Protocol (MCP) server. It acts as a standardized gateway allowing large language models to interact with our local datasets dynamically, directly inside tools like Claude.
                 </p>
             </div>
 
-            <div class="flex flex-col gap-8 bg-white/90 backdrop-blur-md rounded-xl shadow-sm border border-neutral-200 p-6 md:p-8">
-                
-                <div class="text-center md:text-left">
-                    <h3 class="text-lg font-bold text-neutral-800">Engine Architecture</h3>
-                    <p class="text-sm text-neutral-500">Click a stage to see the technical implementation details.</p>
+            <div class="flex flex-col gap-8 bg-neutral-50 rounded-xl border border-neutral-200 p-6 md:p-8">
+                <div>
+                    <h3 class="text-base font-bold text-neutral-800">Engine architecture</h3>
+                    <p class="text-sm text-neutral-500">Select a stage to see the technical implementation details.</p>
                 </div>
 
-                <div class="overflow-x-auto pb-4 -mx-2">
+                <div class="overflow-x-auto pb-2 -mx-2">
                     <div class="flex items-center min-w-max px-2" id="workflow-diagram">
-                        
-                        <button onclick="updateWorkflow(1)" id="node-1" class="workflow-node active-node flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 transition-all duration-200 group">
-                            <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-60">Stage 01</span>
-                            <span class="text-sm font-semibold whitespace-nowrap">Live Data Ingestion</span>
+                        <button onclick="updateWorkflow(1)" id="node-1" class="workflow-node active-node flex flex-col items-center justify-center px-4 py-3 rounded-lg border-2 transition-all duration-150">
+                            <span class="text-[10px] font-mono font-semibold uppercase tracking-wider mb-1 opacity-60">01</span>
+                            <span class="text-sm font-semibold whitespace-nowrap">Live Ingestion</span>
                         </button>
-
                         <div class="workflow-arrow"></div>
-
-                        <button onclick="updateWorkflow(2)" id="node-2" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-200 hover:border-brand-700 group">
-                            <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-60">Stage 02</span>
-                            <span class="text-sm font-semibold whitespace-nowrap">Normalisation Layer</span>
+                        <button onclick="updateWorkflow(2)" id="node-2" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-lg border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-150 hover:border-brand-700">
+                            <span class="text-[10px] font-mono font-semibold uppercase tracking-wider mb-1 opacity-60">02</span>
+                            <span class="text-sm font-semibold whitespace-nowrap">Normalisation</span>
                         </button>
-
                         <div class="workflow-arrow"></div>
-
-                        <button onclick="updateWorkflow(3)" id="node-3" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-200 hover:border-brand-700 group">
-                            <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-60">Stage 03</span>
-                            <span class="text-sm font-semibold whitespace-nowrap">Caching Pipeline</span>
+                        <button onclick="updateWorkflow(3)" id="node-3" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-lg border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-150 hover:border-brand-700">
+                            <span class="text-[10px] font-mono font-semibold uppercase tracking-wider mb-1 opacity-60">03</span>
+                            <span class="text-sm font-semibold whitespace-nowrap">Caching</span>
                         </button>
-
                         <div class="workflow-arrow"></div>
-
-                        <button onclick="updateWorkflow(4)" id="node-4" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-200 hover:border-brand-700 group">
-                            <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-60">Stage 04</span>
+                        <button onclick="updateWorkflow(4)" id="node-4" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-lg border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-150 hover:border-brand-700">
+                            <span class="text-[10px] font-mono font-semibold uppercase tracking-wider mb-1 opacity-60">04</span>
                             <span class="text-sm font-semibold whitespace-nowrap">Tool Routing</span>
                         </button>
-
                         <div class="workflow-arrow"></div>
-
-                        <button onclick="updateWorkflow(5)" id="node-5" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-200 hover:border-brand-700 group">
-                            <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-60">Stage 05</span>
+                        <button onclick="updateWorkflow(5)" id="node-5" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-lg border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-150 hover:border-brand-700">
+                            <span class="text-[10px] font-mono font-semibold uppercase tracking-wider mb-1 opacity-60">05</span>
                             <span class="text-sm font-semibold whitespace-nowrap">LLM Analysis</span>
                         </button>
-
                         <div class="workflow-arrow"></div>
-
-                        <button onclick="updateWorkflow(6)" id="node-6" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-200 hover:border-brand-700 group">
-                            <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-60">Stage 06</span>
+                        <button onclick="updateWorkflow(6)" id="node-6" class="workflow-node flex flex-col items-center justify-center px-4 py-3 rounded-lg border-2 border-neutral-200 bg-white text-neutral-600 transition-all duration-150 hover:border-brand-700">
+                            <span class="text-[10px] font-mono font-semibold uppercase tracking-wider mb-1 opacity-60">06</span>
                             <span class="text-sm font-semibold whitespace-nowrap">Structured Output</span>
                         </button>
                     </div>
                 </div>
 
-                <div class="bg-brand-50 rounded-xl p-6 border border-brand-100 min-h-[160px] flex flex-col justify-center transition-all duration-300" id="description-panel">
-                    <h4 class="text-brand-700 font-bold mb-2" id="panel-title">Live Data Ingestion</h4>
+                <div class="bg-white rounded-lg p-6 border border-brand-100 min-h-[150px] flex flex-col justify-center transition-opacity duration-200" id="description-panel">
+                    <h4 class="text-brand-700 font-bold mb-2 font-mono text-sm" id="panel-title">Live Data Ingestion</h4>
                     <p class="text-neutral-700 text-sm leading-relaxed" id="panel-text">
                         The engine pulls directly from three national sources on demand: the SAHPRA establishment registry, the NDoH Master Health Product List, and the Medicine Price Registry. Each source is fetched via a live HTTP request so the data reflects the most current published release, not a static snapshot.
                     </p>
@@ -265,113 +442,127 @@
         </div>
     </section>
 
-    <section id="capabilities" class="py-20 bg-white">
+    <!-- ============ CAPABILITIES ============ -->
+    <section id="capabilities" class="py-20 lg:py-24 bg-neutral-50 border-y border-neutral-200 scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center">
-                <h2 class="text-3xl font-bold text-neutral-800 mb-4">The Reality Check: Engine Capabilities</h2>
-                <p class="text-neutral-600 max-w-3xl mx-auto">
+            <div class="max-w-2xl mb-14">
+                <p class="text-xs font-mono uppercase tracking-wider text-brand-700 mb-3">The reality check</p>
+                <h2 class="text-3xl font-bold text-neutral-800 mb-4">Engine capabilities</h2>
+                <p class="text-neutral-600 leading-relaxed">
                     The current build excels at specific, targeted analyses. It functions as a descriptive, cross-sectional diagnostic tool. Below are conceptual demonstrations of the insights the engine generates by crossing data silos.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="cap-card bg-white rounded-xl p-6 border border-neutral-200">
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-neutral-800 flex items-center gap-2">
-                            <span class="text-brand-700">&#128202;</span> Therapeutic Landscape Mapping
+                        <h3 class="text-lg font-bold text-neutral-800 flex items-center gap-2.5">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            Therapeutic Landscape Mapping
                         </h3>
                         <p class="text-sm text-neutral-600 mt-2">
-                            Visualizing the distribution of CPR licences across therapeutic areas (ATC chapters) to identify market concentration and white-space opportunities within the registered product landscape.
+                            Visualising the distribution of registered products across therapeutic areas (ATC chapters) to identify market concentration and white-space opportunities.
                         </p>
                     </div>
-                    
-                    <div class="bg-white p-4 rounded-lg shadow-sm border border-neutral-100">
+                    <div class="bg-neutral-50 p-4 rounded-lg border border-neutral-100">
                         <div class="chart-container-tall">
-                            <canvas id="landscapeChart"></canvas>
+                            <canvas id="landscapeChart" role="img" aria-label="Bar chart of unique INNs by ATC therapeutic chapter"></canvas>
                         </div>
-                        <div class="mt-4 text-center text-xs text-neutral-400 italic">
-                            *Relative distribution of unique INNs by ATC Chapter
-                        </div>
+                        <div class="mt-4 text-center text-xs text-neutral-400 font-mono">*Relative distribution of unique INNs by ATC chapter</div>
                     </div>
                 </div>
 
-                <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200">
+                <div class="cap-card bg-white rounded-xl p-6 border border-neutral-200">
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-neutral-800 flex items-center gap-2">
-                            <span class="text-brand-700">&#128269;</span> Cross-Silo Auditing
+                        <h3 class="text-lg font-bold text-neutral-800 flex items-center gap-2.5">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            Cross-Silo Auditing
                         </h3>
                         <p class="text-sm text-neutral-600 mt-2">
-                            Identifying suppliers listed in state tenders who are missing from regulatory registries (SAHPRA). It automatically flags bidders who may lack proper dossiers.
+                            Identifying suppliers listed in state tenders who are missing from regulatory registries, automatically flagging bidders who may lack proper dossiers.
                         </p>
                     </div>
-                    
-                    <div class="bg-white p-4 rounded-lg shadow-sm border border-neutral-100">
+                    <div class="bg-neutral-50 p-4 rounded-lg border border-neutral-100">
                         <div class="chart-container">
-                            <canvas id="auditChart"></canvas>
+                            <canvas id="auditChart" role="img" aria-label="Donut chart of SAHPRA license verification rate among sampled tender awardees"></canvas>
                         </div>
-                        <div class="mt-4 text-center text-xs text-neutral-400 italic">
-                            *Mock visualization of Tender Awardee verification status
-                        </div>
+                        <div class="mt-4 text-center text-xs text-neutral-400 font-mono">*Mock visualization of tender awardee verification status</div>
                     </div>
                 </div>
             </div>
-            
-            <div class="mt-16 text-center max-w-3xl mx-auto">
-                <h2 class="text-lg font-bold text-neutral-800 mb-2">Current Constraints: Context-Aware Data Architecture</h2>
-                <p class="text-sm text-neutral-600 leading-relaxed">
-                    The engine uses a multi-stage approach to work within the finite context windows of current LLMs. Rather than dumping raw datasets into the model, it implements <strong>"data valves"</strong> — configurable pagination limits (default: 15 rows per tool call) that keep individual responses focused and precise. For broad market questions, the engine's aggregation layer pre-summarises datasets by supplier, molecule, or care level before passing results to the model, dramatically reducing token overhead without sacrificing analytical depth. For granular deep-dives, built-in pagination rules enforce multi-call retrieval so that no records are silently dropped.
-                </p>
-                <br>
-                <p class="text-sm text-neutral-600 leading-relaxed">
-                    The practical effect: the engine analyses the market in deliberate, verifiable slices — trading the illusion of one-shot completeness for genuine data integrity across every query.
-                </p>
+
+            <!-- Constraints callout, grounded in the actual tool signature -->
+            <div class="mt-16 grid lg:grid-cols-5 gap-8 items-start max-w-5xl mx-auto">
+                <div class="lg:col-span-3">
+                    <h3 class="text-lg font-bold text-neutral-800 mb-3">Context-aware data architecture</h3>
+                    <p class="text-sm text-neutral-600 leading-relaxed mb-4">
+                        The engine uses a multi-stage approach to work within the finite context windows of current LLMs. Rather than dumping raw datasets into the model, it implements <strong>"data valves"</strong> — configurable pagination limits (default: 15 rows per tool call) that keep individual responses focused and precise. For broad market questions, the engine's aggregation layer pre-summarises datasets by supplier, molecule, or care level before passing results to the model, dramatically reducing token overhead without sacrificing analytical depth.
+                    </p>
+                    <p class="text-sm text-neutral-600 leading-relaxed">
+                        The practical effect: the engine analyses the market in deliberate, verifiable slices, trading the illusion of one-shot completeness for genuine data integrity across every query.
+                    </p>
+                </div>
+                <div class="lg:col-span-2">
+                    <div class="rounded-lg border border-neutral-200 bg-neutral-900 overflow-hidden">
+                        <div class="px-4 py-2 border-b border-neutral-700 text-[11px] font-mono text-neutral-400">server.py</div>
+                        <pre class="p-4 text-[12px] leading-relaxed font-mono text-brand-200 overflow-x-auto"><code>:param limit: Number of rows to
+    return per page (default 15).
+    Keep low to save context
+    window.
+:param offset: Number of rows
+    to skip for pagination.</code></pre>
+                    </div>
+                    <p class="text-xs text-neutral-400 mt-2 font-mono">Actual docstring, analyse_ndoh_market()</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="future" class="py-20 bg-neutral-900 text-white">
+    <!-- ============ ROADMAP ============ -->
+    <section id="future" class="py-20 lg:py-24 bg-neutral-900 text-white scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Architectural Roadmap: Overcoming Throttling</h2>
-                <p class="text-neutral-400 max-w-3xl mx-auto">
+            <div class="max-w-2xl mb-14">
+                <p class="text-xs font-mono uppercase tracking-wider text-brand-500 mb-3">Where this is going</p>
+                <h2 class="text-3xl font-bold mb-4">Architectural roadmap: overcoming throttling</h2>
+                <p class="text-neutral-400 leading-relaxed">
                     Moving to a hybrid retrieval architecture, combining semantic vector search with structured aggregation, will allow the engine to answer exploratory market questions across the full national dataset while preserving the exact-match precision required for regulatory and compliance queries.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="bg-neutral-800/50 rounded-xl p-8 border border-neutral-700">
-                    <h3 class="text-xl font-bold mb-4 text-neutral-50 border-b border-neutral-700 pb-2">Current State: Throttled</h3>
-                    <ul class="space-y-4 text-neutral-300">
-                        <li class="flex items-start gap-2">
-                            <span class="text-neutral-500">&#10006;</span>
-                            <span>Limited by LLM Context Windows.</span>
+                <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700">
+                    <h3 class="text-lg font-bold mb-5 text-neutral-100 border-b border-neutral-700 pb-3 font-mono">Current state: throttled</h3>
+                    <ul class="space-y-4 text-neutral-300 text-sm">
+                        <li class="flex items-start gap-2.5">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-neutral-500 mt-0.5 flex-shrink-0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            <span>Limited by LLM context windows.</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-neutral-500">&#10006;</span>
+                        <li class="flex items-start gap-2.5">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-neutral-500 mt-0.5 flex-shrink-0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                             <span>Provides a high-fidelity "snapshot" of the market at a single point in time.</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-neutral-500">&#10006;</span>
-                            <span>Analyzes data in isolated "slices".</span>
+                        <li class="flex items-start gap-2.5">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-neutral-500 mt-0.5 flex-shrink-0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            <span>Analyses data in isolated "slices."</span>
                         </li>
                     </ul>
                 </div>
-                
-                <div class="bg-white rounded-xl p-8 border border-neutral-200 relative overflow-hidden text-neutral-800 shadow-xl shadow-brand-900/20">
-                    <div class="absolute top-0 right-0 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">THE GOAL</div>
-                    <h3 class="text-xl font-bold mb-4 text-neutral-800 border-b border-neutral-200 pb-2">Future State: Vector Store</h3>
-                    <ul class="space-y-4 text-neutral-600">
-                        <li class="flex items-start gap-2">
-                            <span class="text-brand-600 font-bold">&#10004;</span>
-                            <span><strong>Selective Retrieval:</strong> Extracts only the most relevant fragments from indexed datasets.</span>
+
+                <div class="bg-white rounded-xl p-8 border border-neutral-200 relative overflow-hidden text-neutral-800 shadow-xl shadow-black/20">
+                    <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-mono font-bold px-3 py-1 rounded-bl-lg tracking-wide">THE GOAL</div>
+                    <h3 class="text-lg font-bold mb-5 text-neutral-800 border-b border-neutral-200 pb-3 font-mono">Future state: hybrid retrieval</h3>
+                    <ul class="space-y-4 text-neutral-600 text-sm">
+                        <li class="flex items-start gap-2.5">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong class="text-neutral-800">Selective retrieval:</strong> extracts only the most relevant fragments from indexed datasets.</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-brand-600 font-bold">&#10004;</span>
-                            <span><strong>Longitudinal Analysis:</strong> Efficiently navigates and compares multiple years of historical data simultaneously.</span>
+                        <li class="flex items-start gap-2.5">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong class="text-neutral-800">Longitudinal analysis:</strong> efficiently compares multiple years of historical data simultaneously.</span>
                         </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-brand-600 font-bold">&#10004;</span>
-                            <span><strong>Scalable Platform:</strong> Capable of analyzing trends across the entire national pharmaceutical landscape.</span>
+                        <li class="flex items-start gap-2.5">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-600 mt-0.5 flex-shrink-0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong class="text-neutral-800">Scalable platform:</strong> capable of analysing trends across the entire national pharmaceutical landscape.</span>
                         </li>
                     </ul>
                 </div>
@@ -379,29 +570,34 @@
         </div>
     </section>
 
-    <section id="pilot" class="py-24 bg-brand-50 border-t border-brand-100">
+    <!-- ============ PILOT CTA ============ -->
+    <section id="pilot" class="py-24 bg-brand-50 border-t border-brand-100 scroll-mt-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-extrabold text-brand-900 mb-6">Join the Intelligence Pilot</h2>
-            <p class="text-lg text-brand-700 mb-10 max-w-2xl mx-auto">
-                We are currently testing the engine's reasoning capabilities with a select group of Market Access, Regulatory, and Supply Chain professionals. 
-                Bring the ZA Pharma Intelligence Engine directly into your Claude workspace today.
+            <p class="text-xs font-mono uppercase tracking-wider text-brand-700 mb-3">Get involved</p>
+            <h2 class="text-3xl font-extrabold text-brand-900 mb-6">Join the intelligence pilot</h2>
+            <p class="text-lg text-brand-700/90 mb-12 max-w-2xl mx-auto">
+                We are currently testing the engine's reasoning capabilities with a select group of market access, regulatory, and supply chain professionals. Bring the ZA Pharma Intelligence Engine directly into your Claude workspace today.
             </p>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-brand-100 flex flex-col justify-center items-center">
-                    <div class="text-3xl mb-4">&#128273;</div>
+                <div class="cta-card bg-white p-8 rounded-xl border border-brand-100 flex flex-col justify-center items-center">
+                    <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-4">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3-3.5 3.5zM2 22l3-3"/></svg>
+                    </span>
                     <h3 class="text-lg font-bold text-neutral-800 mb-2">New Users</h3>
-                    <p class="text-sm text-neutral-500 mb-6">Request an Access Key and setup instructions to integrate the engine into your workflow.</p>
-                    <a href="http://localhost:5678/form/85e677bf-4f87-4172-9a28-7c150de0341c" title="Access coming soon!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors duration-200 shadow-sm">
+                    <p class="text-sm text-neutral-500 mb-6">Request an access key and setup instructions to integrate the engine into your workflow.</p>
+                    <a href="https://za-pharma-intel.mywire.org/form/814abe24-b9c3-470f-b0d0-99a43194cd28" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-md text-white bg-brand-700 hover:bg-brand-900 transition-colors">
                         Apply for Access Key
                     </a>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-brand-100 flex flex-col justify-center items-center">
-                    <div class="text-3xl mb-4">&#128172;</div>
+                <div class="cta-card bg-white p-8 rounded-xl border border-brand-100 flex flex-col justify-center items-center">
+                    <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-4">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                    </span>
                     <h3 class="text-lg font-bold text-neutral-800 mb-2">Current Pilot Testers</h3>
                     <p class="text-sm text-neutral-500 mb-6">Found a bug? Have a feature request? Your operational insights drive our technical roadmap.</p>
-                    <a href="#" title="Coming soon!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2 border border-brand-300 text-sm font-medium rounded-md text-brand-700 bg-white hover:bg-brand-50 transition-colors shadow-sm">
+                    <a href="https://za-pharma-intel.mywire.org/form/c6005bd8-6b43-4700-af5a-8041cc34f5b9" title="We would love to hear from you!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-md text-brand-700 bg-white border border-brand-300 hover:bg-brand-50 transition-colors">
                         Submit Pilot Feedback
                     </a>
                 </div>
@@ -409,17 +605,49 @@
         </div>
     </section>
 
-    <footer class="bg-neutral-900 py-12 text-center text-neutral-400 border-t border-neutral-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-2xl text-brand-500 mb-4">&#9881;</div>
-            <p class="font-medium text-neutral-300 mb-2">ZA Pharma Intel</p>
-            <p class="text-sm max-w-md mx-auto">The AI-powered map of the South African pharmaceutical landscape.</p>
-            <p class="text-xs mt-8">&copy; 2026 ZA Pharma Intelligence. Data sourced from SAHPRA, NDoH, and MPR registry files.</p>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="relative bg-neutral-900 text-neutral-400 border-t border-neutral-800 overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-24 signal-field-footer pointer-events-none" aria-hidden="true"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+                <div class="col-span-2">
+                    <a href="#top" class="flex items-center gap-2.5 mb-4">
+                        <span class="w-7 h-7 rounded-md bg-brand-700 flex items-center justify-center flex-shrink-0">
+                            <svg width="14" height="14" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 8 L15 14 M24 8 L17 14 M16 14 L16 25" stroke="white" stroke-width="2.4" stroke-linecap="round"/><circle cx="16" cy="14" r="2.6" fill="white"/></svg>
+                        </span>
+                        <span class="font-bold text-neutral-100">ZA Pharma Intel</span>
+                    </a>
+                    <p class="text-sm max-w-xs leading-relaxed">The AI-powered map of the South African pharmaceutical landscape.</p>
+                </div>
+                <div>
+                    <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-4">Explore</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#problem" class="hover:text-brand-400 transition-colors">The Problem</a></li>
+                        <li><a href="#architecture" class="hover:text-brand-400 transition-colors">Architecture</a></li>
+                        <li><a href="#capabilities" class="hover:text-brand-400 transition-colors">Capabilities</a></li>
+                        <li><a href="#future" class="hover:text-brand-400 transition-colors">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-4">Pilot</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="https://za-pharma-intel.mywire.org/form/814abe24-b9c3-470f-b0d0-99a43194cd28" target="_blank" rel="noopener noreferrer" class="hover:text-brand-400 transition-colors">Request Access</a></li>
+                        <li><a href="https://za-pharma-intel.mywire.org/form/c6005bd8-6b43-4700-af5a-8041cc34f5b9" target="_blank" rel="noopener noreferrer" class="hover:text-brand-400 transition-colors">Submit Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <p class="text-xs">&copy; 2026 ZA Pharma Intelligence. Data sourced from SAHPRA, NDoH, and MPR registry files.</p>
+                <p class="text-xs font-mono text-neutral-600">Built on the Model Context Protocol</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Workflow Data
+        // ---------- Architecture workflow tabs ----------
         const workflowData = {
             1: {
                 title: "Live Data Ingestion",
@@ -452,13 +680,12 @@
             const title = document.getElementById('panel-title');
             const text = document.getElementById('panel-text');
 
-            panel.style.opacity = '0.5';
-            
+            panel.style.opacity = '0.4';
             setTimeout(() => {
                 title.innerText = workflowData[step].title;
                 text.innerText = workflowData[step].text;
                 panel.style.opacity = '1';
-            }, 150);
+            }, 120);
 
             document.querySelectorAll('.workflow-node').forEach(node => {
                 node.classList.remove('active-node');
@@ -470,12 +697,11 @@
             activeNode.classList.remove('border-neutral-200', 'bg-white', 'text-neutral-600');
         }
 
+        // ---------- Charts ----------
         document.addEventListener('DOMContentLoaded', () => {
-            // Global Chart config
             Chart.defaults.font.family = "'Inter', sans-serif";
             Chart.defaults.color = '#78716c';
 
-            // Landscape Chart
             const ctxLandscape = document.getElementById('landscapeChart').getContext('2d');
             new Chart(ctxLandscape, {
                 type: 'bar',
@@ -484,8 +710,8 @@
                     datasets: [{
                         label: 'Unique INNs',
                         data: [92, 66, 63, 55, 53, 35, 33, 31, 29, 28, 19, 16, 13, 5],
-                        backgroundColor: '#14b8a6', 
-                        borderRadius: 4
+                        backgroundColor: '#0d9488',
+                        borderRadius: 3
                     }]
                 },
                 options: {
@@ -494,27 +720,15 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ' ' + context.parsed.x + ' INNs';
-                                }
-                            }
-                        }
+                        tooltip: { callbacks: { label: (c) => ' ' + c.parsed.x + ' INNs' } }
                     },
                     scales: {
-                        x: {
-                            beginAtZero: true,
-                            grid: { color: '#f5f5f4' }
-                        },
-                        y: {
-                            grid: { display: false }
-                        }
+                        x: { beginAtZero: true, grid: { color: '#f0efed' } },
+                        y: { grid: { display: false } }
                     }
                 }
             });
 
-            // Audit Chart
             const ctxAudit = document.getElementById('auditChart').getContext('2d');
             new Chart(ctxAudit, {
                 type: 'doughnut',
@@ -522,7 +736,7 @@
                     labels: ['Verified SAHPRA License', 'Missing/Unverified Profile'],
                     datasets: [{
                         data: [78, 22],
-                        backgroundColor: ['#0f766e', '#fbbf24'],
+                        backgroundColor: ['#0f766e', '#f59e0b'],
                         borderWidth: 0,
                         hoverOffset: 4
                     }]
@@ -532,20 +746,8 @@
                     maintainAspectRatio: false,
                     cutout: '70%',
                     plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                usePointStyle: true
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ' ' + context.parsed + '% of Sample';
-                                }
-                            }
-                        }
+                        legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } },
+                        tooltip: { callbacks: { label: (c) => ' ' + c.parsed + '% of sample' } }
                     }
                 }
             });
