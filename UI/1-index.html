@@ -28,7 +28,7 @@
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1749244768351-2726dc23d26c?w=1200&h=630&fit=crop&auto=format&q=80">
 
     <!-- ============ Favicon (inline SVG mark, no external file needed) ============ -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cpath d='M8 8 L15 14 M24 8 L17 14 M16 14 L16 25' stroke='white' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='16' cy='14' r='2.4' fill='white'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Ctext x='16' y='23' font-family='Arial, Helvetica, sans-serif' font-weight='800' font-size='19' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
     <link rel="apple-touch-icon" href="logo.png">
 
     <!-- ============ Structured data (SEO: SoftwareApplication + Organization) ============ -->
@@ -180,13 +180,40 @@
             -webkit-mask-image: linear-gradient(to bottom, black, transparent);
         }
 
-        .status-dot { width: 6px; height: 6px; border-radius: 999px; background: #14b8a6; display: inline-block; }
+        .status-dot {
+            width: 6px; height: 6px; border-radius: 999px;
+            background: #ef4444;
+            display: inline-block;
+            animation: statusPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
 
         .photo-frame {
             box-shadow: 0 30px 60px -25px rgba(19, 78, 74, 0.35);
         }
 
         code, .code-block { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -268,9 +295,7 @@
                                 <p class="text-neutral-700 leading-relaxed pt-0.5">Which suppliers won the most NDoH tenders for antibiotics (ATC J01), and are they SAHPRA licensed?</p>
                             </div>
                             <div class="flex gap-2.5">
-                                <span class="w-6 h-6 rounded-full bg-brand-700 flex-shrink-0 flex items-center justify-center">
-                                    <svg width="12" height="12" viewBox="0 0 32 32" fill="none" aria-hidden="true"></svg>
-                                </span>
+                                <span class="w-6 h-6 rounded-full bg-brand-700 flex-shrink-0 flex items-center justify-center"></span>
                                 <div class="flex-1 min-w-0">
                                     <p class="font-semibold text-neutral-800 text-[13px] mb-1">Aggregate Public Market Analysis by Supplier</p>
                                     <p class="font-mono text-[11px] text-neutral-400 mb-2.5">Source: NDoH MHPL 15 Jun 2026 <span class="text-brand-600 font-semibold">[LIVE]</span> · Showing 1–5 of 22</p>
@@ -305,7 +330,7 @@
     <!-- ============ PROBLEM ============ -->
     <section id="problem" class="py-20 lg:py-24 bg-white scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16">
+            <div class="max-w-2xl mb-16 reveal">
                 <p class="text-xs font-mono uppercase tracking-wider text-brand-700 mb-3">The barrier</p>
                 <h2 class="text-3xl font-bold text-neutral-800 mb-4">Disconnected data silos</h2>
                 <p class="text-neutral-600 leading-relaxed">
@@ -313,8 +338,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-group">
+                <div class="silo-card reveal bg-neutral-50 rounded-xl p-8 border border-neutral-200">
                     <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-5">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="16" height="11"/><path d="M9 21V13h6v8"/><path d="M4 9L12 3l8 6"/></svg>
                     </span>
@@ -327,7 +352,7 @@
                     </ul>
                 </div>
 
-                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200">
+                <div class="silo-card reveal bg-neutral-50 rounded-xl p-8 border border-neutral-200">
                     <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-5">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M8 15h2"/></svg>
                     </span>
@@ -340,7 +365,7 @@
                     </ul>
                 </div>
 
-                <div class="silo-card bg-neutral-50 rounded-xl p-8 border border-neutral-200">
+                <div class="silo-card reveal bg-neutral-50 rounded-xl p-8 border border-neutral-200">
                     <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-5">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
                     </span>
@@ -359,7 +384,7 @@
     <!-- ============ FRAMED PHOTO BANNER ============ -->
     <section class="py-4 bg-neutral-50 border-y border-neutral-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-            <div class="relative rounded-2xl overflow-hidden photo-frame">
+            <div class="relative rounded-2xl overflow-hidden photo-frame reveal">
                 <img
                     src="https://images.unsplash.com/photo-1749244768351-2726dc23d26c?w=1800&auto=format&fit=crop&q=80"
                     alt="Rows of industrial warehouse shelving used for distribution and inventory, representing the public procurement pipeline ZA Pharma Intel tracks"
@@ -380,7 +405,7 @@
     <!-- ============ ARCHITECTURE ============ -->
     <section id="architecture" class="py-20 lg:py-24 bg-white scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-12">
+            <div class="max-w-2xl mb-12 reveal">
                 <p class="text-xs font-mono uppercase tracking-wider text-brand-700 mb-3">Under the hood</p>
                 <h2 class="text-3xl font-bold text-neutral-800 mb-4">The MCP architecture</h2>
                 <p class="text-neutral-600 leading-relaxed">
@@ -388,7 +413,7 @@
                 </p>
             </div>
 
-            <div class="flex flex-col gap-8 bg-neutral-50 rounded-xl border border-neutral-200 p-6 md:p-8">
+            <div class="flex flex-col gap-8 bg-neutral-50 rounded-xl border border-neutral-200 p-6 md:p-8 reveal">
                 <div>
                     <h3 class="text-base font-bold text-neutral-800">Engine architecture</h3>
                     <p class="text-sm text-neutral-500">Select a stage to see the technical implementation details.</p>
@@ -441,7 +466,7 @@
     <!-- ============ CAPABILITIES ============ -->
     <section id="capabilities" class="py-20 lg:py-24 bg-neutral-50 border-y border-neutral-200 scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-14">
+            <div class="max-w-2xl mb-14 reveal">
                 <p class="text-xs font-mono uppercase tracking-wider text-brand-700 mb-3">The reality check</p>
                 <h2 class="text-3xl font-bold text-neutral-800 mb-4">Engine capabilities</h2>
                 <p class="text-neutral-600 leading-relaxed">
@@ -449,8 +474,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="cap-card bg-white rounded-xl p-6 border border-neutral-200">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal-group">
+                <div class="cap-card reveal bg-white rounded-xl p-6 border border-neutral-200">
                     <div class="mb-6">
                         <h3 class="text-lg font-bold text-neutral-800 flex items-center gap-2.5">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -468,7 +493,7 @@
                     </div>
                 </div>
 
-                <div class="cap-card bg-white rounded-xl p-6 border border-neutral-200">
+                <div class="cap-card reveal bg-white rounded-xl p-6 border border-neutral-200">
                     <div class="mb-6">
                         <h3 class="text-lg font-bold text-neutral-800 flex items-center gap-2.5">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -488,8 +513,8 @@
             </div>
 
             <!-- Constraints callout, grounded in the actual tool signature -->
-            <div class="mt-16 grid lg:grid-cols-5 gap-8 items-start max-w-5xl mx-auto">
-                <div class="lg:col-span-3">
+            <div class="mt-16 grid lg:grid-cols-5 gap-8 items-start max-w-5xl mx-auto reveal-group">
+                <div class="lg:col-span-3 reveal">
                     <h3 class="text-lg font-bold text-neutral-800 mb-3">Context-aware data architecture</h3>
                     <p class="text-sm text-neutral-600 leading-relaxed mb-4">
                         The engine uses a multi-stage approach to work within the finite context windows of current LLMs. Rather than dumping raw datasets into the model, it implements <strong>"data valves"</strong> — configurable pagination limits (default: 15 rows per tool call) that keep individual responses focused and precise. For broad market questions, the engine's aggregation layer pre-summarises datasets by supplier, molecule, or care level before passing results to the model, dramatically reducing token overhead without sacrificing analytical depth.
@@ -498,7 +523,7 @@
                         The practical effect: the engine analyses the market in deliberate, verifiable slices, trading the illusion of one-shot completeness for genuine data integrity across every query.
                     </p>
                 </div>
-                <div class="lg:col-span-2">
+                <div class="lg:col-span-2 reveal">
                     <div class="rounded-lg border border-neutral-200 bg-neutral-900 overflow-hidden">
                         <div class="px-4 py-2 border-b border-neutral-700 text-[11px] font-mono text-neutral-400">server.py</div>
                         <pre class="p-4 text-[12px] leading-relaxed font-mono text-brand-200 overflow-x-auto"><code>:param limit: Number of rows to
@@ -517,7 +542,7 @@
     <!-- ============ ROADMAP ============ -->
     <section id="future" class="py-20 lg:py-24 bg-neutral-900 text-white scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-14">
+            <div class="max-w-2xl mb-14 reveal">
                 <p class="text-xs font-mono uppercase tracking-wider text-brand-500 mb-3">Where this is going</p>
                 <h2 class="text-3xl font-bold mb-4">Architectural roadmap: overcoming throttling</h2>
                 <p class="text-neutral-400 leading-relaxed">
@@ -525,8 +550,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal-group">
+                <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700 reveal">
                     <h3 class="text-lg font-bold mb-5 text-neutral-100 border-b border-neutral-700 pb-3 font-mono">Current state: throttled</h3>
                     <ul class="space-y-4 text-neutral-300 text-sm">
                         <li class="flex items-start gap-2.5">
@@ -544,7 +569,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-white rounded-xl p-8 border border-neutral-200 relative overflow-hidden text-neutral-800 shadow-xl shadow-black/20">
+                <div class="bg-white rounded-xl p-8 border border-neutral-200 relative overflow-hidden text-neutral-800 shadow-xl shadow-black/20 reveal">
                     <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-mono font-bold px-3 py-1 rounded-bl-lg tracking-wide">THE GOAL</div>
                     <h3 class="text-lg font-bold mb-5 text-neutral-800 border-b border-neutral-200 pb-3 font-mono">Future state: hybrid retrieval</h3>
                     <ul class="space-y-4 text-neutral-600 text-sm">
@@ -575,8 +600,8 @@
                 We are currently testing the engine's reasoning capabilities with a select group of market access, regulatory, and supply chain professionals. Bring the ZA Pharma Intelligence Engine directly into your Claude workspace today.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <div class="cta-card bg-white p-8 rounded-xl border border-brand-100 flex flex-col justify-center items-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto reveal-group">
+                <div class="cta-card reveal bg-white p-8 rounded-xl border border-brand-100 flex flex-col justify-center items-center">
                     <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-4">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3-3.5 3.5zM2 22l3-3"/></svg>
                     </span>
@@ -587,7 +612,7 @@
                     </a>
                 </div>
 
-                <div class="cta-card bg-white p-8 rounded-xl border border-brand-100 flex flex-col justify-center items-center">
+                <div class="cta-card reveal bg-white p-8 rounded-xl border border-brand-100 flex flex-col justify-center items-center">
                     <span class="w-11 h-11 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center mb-4">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
                     </span>
@@ -693,6 +718,29 @@
 
         // ---------- Charts ----------
         document.addEventListener('DOMContentLoaded', () => {
+            // ---------- Scroll reveal ----------
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            document.querySelectorAll('.reveal-group').forEach(group => {
+                const items = group.querySelectorAll(':scope > .reveal');
+                items.forEach((el, i) => { el.style.transitionDelay = `${i * 90}ms`; });
+            });
+
+            if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+            } else {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+                document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            }
+
             Chart.defaults.font.family = "'Inter', sans-serif";
             Chart.defaults.color = '#78716c';
 
